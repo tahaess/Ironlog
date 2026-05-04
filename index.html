@@ -15,7 +15,7 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:-apple-sy
 #app{height:100dvh;display:flex;flex-direction:column;max-width:430px;margin:0 auto;}
 .page{flex:1;display:flex;flex-direction:column;overflow:hidden;}
 .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 16px 16px;}
-.pad-top{padding-top:calc(var(--safe-top) + 20px);}
+.pad-top{padding-top:calc(var(--safe-top) + 52px);}
 #sync-banner{display:none;position:fixed;top:calc(var(--safe-top)+8px);left:50%;transform:translateX(-50%);z-index:999;background:#1a1a2e;border:1px solid var(--border);border-radius:20px;padding:8px 16px;font-size:12px;font-weight:700;letter-spacing:1px;white-space:nowrap;}
 #sync-banner.syncing{display:block;color:var(--acc);}
 #sync-banner.ok{display:block;color:var(--green);}
@@ -218,7 +218,7 @@ function render(){
 function el(tag,attrs){var e=document.createElement(tag);if(attrs)Object.entries(attrs).forEach(function(kv){e.setAttribute(kv[0],kv[1]);});return e;}
 function elt(tag,text,attrs){var e=el(tag,attrs);e.textContent=text;return e;}
 function mkHdr(sub,title,backFn,accentSub){
-  var h=el('div',{style:'padding:calc(var(--safe-top)+20px) 16px 14px;display:flex;gap:12px;align-items:center;border-bottom:1px solid #111;background:#0c0c18;flex-shrink:0;'});
+  var h=el('div',{style:'padding:calc(var(--safe-top) + 52px) 16px 14px;display:flex;gap:12px;align-items:center;border-bottom:1px solid #111;background:#0c0c18;flex-shrink:0;'});
   var b=el('button',{class:'back-btn'});b.textContent='←';b.onclick=backFn;h.appendChild(b);
   var t=el('div');t.innerHTML='<div style="font-size:10px;color:'+(accentSub?'var(--acc)':'#555')+';letter-spacing:3px;">'+sub+'</div><div style="font-size:22px;font-weight:900;">'+title+'</div>';
   h.appendChild(t);return h;
