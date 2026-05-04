@@ -930,7 +930,7 @@ function renderSettings(wrap){
       prs:S.prs,
       trainingCycles:S.trainingCycles.map(function(c){return {
         name:c.name,startDate:c.startDate,
-        sessions:c.sessions.map(function(ses){return {name:ses.name,exos:ses.exos.map(function(e){return {name:e.name,sets:e.sets,reps:e.reps,rest:e.rest};});};}),
+        sessions:c.sessions.map(function(ses){return {name:ses.name,exos:ses.exos.map(function(e){return {name:e.name,sets:e.sets,reps:e.reps,rest:e.rest};})};} ),
         log:(c.log||[]).map(function(l){return {date:l.date,sessionName:l.sessionName,sets:l.sets};})
       };}),
     };
