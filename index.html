@@ -166,7 +166,7 @@ var WEIGHTS=[];for(var w=0;w<=250;w+=1.25)WEIGHTS.push(Math.round(w*100)/100);
 var REPS=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 var DAYS=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
 var LS='ironlog-v5';
-var S={view:'log',step:'muscle',selMuscle:null,selExo:null,selVariant:null,sets:[],reps:8,weight:60,flashIdx:-1,restSecs:0,restDur:90,sessions:[],prs:{},pendingSync:[],lastSync:null,trainingCycles:[],activeTrainingCycle:null,cycleView:'home',activeCycleSession:null,_newCycle:null,_pickExoSesIdx:null,_pickExoMuscle:null,_pickExoExo:null,enhPinSet:null,enhUnlocked:false,enhCycles:[],activeEnhCycle:null,enhView:'home',_newEnh:null};
+var S={view:'log',step:'muscle',selMuscle:null,selExo:null,selVariant:null,sets:[],reps:8,weight:60,flashIdx:-1,restSecs:0,restDur:90,sessions:[],prs:{},pendingSync:[],lastSync:null,trainingCycles:[],activeTrainingCycle:null,cycleView:'home',activeCycleSession:null,_newCycle:null,_pickExoSesIdx:null,_pickExoMuscle:null,_pickExoExo:null,enhPinSet:null,enhUnlocked:false,enhCycles:[],activeEnhCycle:null,enhView:'home',_newEnh:null,_statsExo:null};
 var restIv=null;
 function loadLocal(){try{var d=JSON.parse(localStorage.getItem(LS)||'{}');['sessions','prs','pendingSync','lastSync','trainingCycles','activeTrainingCycle','enhPinSet','enhCycles','activeEnhCycle'].forEach(function(k){if(d[k]!==undefined)S[k]=d[k];});}catch(e){}}
 function saveLocal(){try{localStorage.setItem(LS,JSON.stringify({sessions:S.sessions,prs:S.prs,pendingSync:S.pendingSync,lastSync:S.lastSync,trainingCycles:S.trainingCycles,activeTrainingCycle:S.activeTrainingCycle,enhPinSet:S.enhPinSet,enhCycles:S.enhCycles,activeEnhCycle:S.activeEnhCycle}));}catch(e){}}
@@ -376,6 +376,7 @@ function renderCycle(wrap){
   else if(S.cycleView==='pickMuscle'||S.cycleView==='pickExo'||S.cycleView==='pickVariant')renderCyclePick(wrap);
   else if(S.cycleView==='active')renderCycleActive(wrap);
   else if(S.cycleView==='session')renderCycleSession(wrap);
+  else if(S.cycleView==='stats')renderCycleStats(wrap);
 }
 
 function renderCycleHome(wrap){
@@ -492,6 +493,15 @@ function renderCycleActive(wrap){
     var b=el('div',{class:'stat-box'});b.innerHTML='<div class="stat-val" style="color:var(--blue);">'+x.v+'</div><div class="stat-lbl">'+x.l.toUpperCase()+'</div>';sg.appendChild(b);
   });
   scroll.appendChild(sg);
+
+  // Stats button
+  if(total>0){
+    var sb=el('button',{style:'width:100%;padding:13px;background:#0a0f1a;border:1px solid var(--blue);border-radius:12px;color:var(--blue);font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;margin-bottom:16px;letter-spacing:1px;'});
+    sb.textContent='📈 STATS DU CYCLE ›';
+    sb.onclick=function(){S.cycleView='stats';render();};
+    scroll.appendChild(sb);
+  }
+
   scroll.appendChild(elt('div','CHOISIR UNE SÉANCE',{class:'sec-lbl'}));
   cyc.sessions.forEach(function(ses){
     var b=el('button',{class:'ses-btn'});
@@ -500,6 +510,180 @@ function renderCycleActive(wrap){
     scroll.appendChild(b);
   });
   wrap.appendChild(scroll);
+}
+
+function renderCycleStats(wrap){
+  var cyc=S.trainingCycles.find(function(c){return c.id===S.activeTrainingCycle;});
+  if(!cyc){S.cycleView='active';render();return;}
+  wrap.appendChild(mkHdr('STATS',cyc.name,function(){S.cycleView='active';render();}));
+  var scroll=el('div',{class:'scroll',style:'padding-top:16px;'});
+
+  // Collect all unique exos from cycle definition
+  var allExos={};
+  cyc.sessions.forEach(function(ses){
+    ses.exos.forEach(function(exo){
+      if(!allExos[exo.name])allExos[exo.name]=[];
+    });
+  });
+
+  // Build data points from cycle log
+  (cyc.log||[]).forEach(function(logEntry){
+    var byExo={};
+    (logEntry.sets||[]).forEach(function(s){
+      if(!byExo[s.exo])byExo[s.exo]=[];
+      byExo[s.exo].push(s);
+    });
+    Object.keys(byExo).forEach(function(exoName){
+      if(!allExos[exoName])allExos[exoName]=[];
+      var sets=byExo[exoName];
+      var avgWeight=Math.round((sets.reduce(function(a,s){return a+s.weight;},0)/sets.length)*10)/10;
+      var avgReps=Math.round((sets.reduce(function(a,s){return a+s.reps;},0)/sets.length)*10)/10;
+      allExos[exoName].push({date:logEntry.date,avgWeight:avgWeight,avgReps:avgReps});
+    });
+  });
+
+  var exoNames=Object.keys(allExos);
+  if(!exoNames.length){
+    scroll.appendChild(elt('div','Aucun exercice défini dans ce cycle.',{style:'color:var(--t3);text-align:center;padding:40px 16px;font-size:13px;'}));
+    wrap.appendChild(scroll);return;
+  }
+
+  // Exo selector buttons
+  scroll.appendChild(elt('div','CHOISIR UN EXERCICE',{class:'sec-lbl'}));
+  var grid=el('div',{style:'display:flex;flex-direction:column;gap:8px;margin-bottom:20px;'});
+  exoNames.forEach(function(exoName){
+    var points=allExos[exoName];
+    var hasData=points.length>0;
+    var b=el('button',{style:'width:100%;padding:14px 16px;background:'+(S._statsExo===exoName?'#0a0f1a':'var(--bg2)')+';border:1px solid '+(S._statsExo===exoName?'var(--blue)':'var(--border)')+';border-radius:12px;text-align:left;cursor:pointer;font-family:inherit;display:flex;justify-content:space-between;align-items:center;'});
+    b.innerHTML='<div><div style="font-size:14px;font-weight:700;color:var(--t1);">'+exoName+'</div><div style="font-size:11px;color:var(--t3);margin-top:3px;">'+(hasData?points.length+' séance'+(points.length>1?'s':''):'Pas encore de données')+'</div></div><div style="font-size:18px;">'+(hasData?'📈':'—')+'</div>';
+    b.onclick=function(){S._statsExo=exoName;render();};
+    grid.appendChild(b);
+  });
+  scroll.appendChild(grid);
+
+  // Show graph for selected exo
+  if(S._statsExo&&allExos[S._statsExo]!==undefined){
+    var points=allExos[S._statsExo];
+    var card=el('div',{class:'card',style:'border-color:var(--blue);'});
+    card.appendChild(elt('div',S._statsExo,{style:'font-size:13px;font-weight:800;color:var(--t1);margin-bottom:4px;line-height:1.3;'}));
+
+    if(!points.length){
+      // No data yet
+      card.appendChild(elt('div','Aucune donnée pour cet exercice encore.\nFais une séance de cycle pour voir la progression.',{style:'color:var(--t3);font-size:13px;padding:24px 0;text-align:center;line-height:1.6;'}));
+    } else {
+      card.appendChild(elt('div',points.length+' séance'+(points.length>1?'s':''),{style:'font-size:10px;color:var(--t3);margin-bottom:14px;letter-spacing:2px;'}));
+
+      // First vs last comparison
+      if(points.length>1){
+        var first=points[0];var last=points[points.length-1];
+        var diffW=Math.round((last.avgWeight-first.avgWeight)*10)/10;
+        var diffR=Math.round((last.avgReps-first.avgReps)*10)/10;
+        var compRow=el('div',{style:'display:flex;gap:8px;margin-bottom:16px;'});
+        [{label:'Poids moy.',val:last.avgWeight+'kg',diff:diffW,unit:'kg'},{label:'Reps moy.',val:last.avgReps,diff:diffR,unit:''}].forEach(function(item){
+          var box=el('div',{style:'flex:1;background:#0a0a14;border-radius:10px;padding:10px;text-align:center;'});
+          var arrow=item.diff>0?'↑':item.diff<0?'↓':'→';
+          var color=item.diff>0?'var(--green)':item.diff<0?'var(--red)':'var(--t3)';
+          box.innerHTML='<div style="font-size:10px;color:var(--t3);letter-spacing:2px;margin-bottom:4px;">'+item.label.toUpperCase()+'</div><div style="font-size:20px;font-weight:900;color:var(--t1);">'+item.val+'</div><div style="font-size:12px;color:'+color+';font-weight:700;margin-top:3px;">'+arrow+' '+(item.diff>0?'+':'')+item.diff+item.unit+'</div>';
+          compRow.appendChild(box);
+        });
+        card.appendChild(compRow);
+        card.appendChild(drawCurve(points,'avgWeight','POIDS MOY. (kg)','var(--acc)'));
+        card.appendChild(drawCurve(points,'avgReps','REPS MOY.','var(--blue)'));
+      } else {
+        // Only one session
+        var only=points[0];
+        var onlyBox=el('div',{style:'background:#0a0a14;border-radius:10px;padding:14px;'});
+        onlyBox.innerHTML='<div style="font-size:10px;color:var(--t3);letter-spacing:2px;margin-bottom:8px;">PREMIÈRE SÉANCE — '+only.date.slice(5)+'</div><div style="display:flex;gap:20px;"><div><span style="color:var(--acc);font-weight:900;font-size:22px;">'+only.avgWeight+'kg</span><span style="font-size:11px;color:var(--t3);margin-left:4px;">moy.</span></div><div><span style="color:var(--blue);font-weight:900;font-size:22px;">'+only.avgReps+'</span><span style="font-size:11px;color:var(--t3);margin-left:4px;">reps moy.</span></div></div><div style="font-size:11px;color:var(--t3);margin-top:10px;">Fais une 2ème séance pour voir la courbe de progression.</div>';
+        card.appendChild(onlyBox);
+      }
+    }
+    scroll.appendChild(card);
+  }
+  wrap.appendChild(scroll);
+}
+
+function drawCurve(points,key,label,color){
+  var wrap=el('div',{style:'margin-bottom:12px;'});
+  wrap.appendChild(elt('div',label,{style:'font-size:9px;color:var(--t3);letter-spacing:3px;margin-bottom:8px;'}));
+
+  var vals=points.map(function(p){return p[key];});
+  var min=Math.min.apply(null,vals);
+  var max=Math.max.apply(null,vals);
+  var range=max-min||1;
+  var H=80;var W=100;
+
+  // SVG
+  var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  svg.setAttribute('style','width:100%;height:80px;overflow:visible;');
+
+  // Grid lines
+  [0,0.5,1].forEach(function(t){
+    var y=H-t*H;
+    var line=document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1','0');line.setAttribute('x2',String(W));
+    line.setAttribute('y1',String(y));line.setAttribute('y2',String(y));
+    line.setAttribute('stroke','#1e1e2e');line.setAttribute('stroke-width','0.5');
+    svg.appendChild(line);
+  });
+
+  // Build path
+  var pathD='';
+  var areaD='';
+  points.forEach(function(p,i){
+    var x=points.length===1?W/2:i*(W/(points.length-1));
+    var y=H-((p[key]-min)/range)*(H*0.85)-H*0.075;
+    if(i===0){pathD='M'+x.toFixed(1)+','+y.toFixed(1);areaD='M'+x.toFixed(1)+','+H+' L'+x.toFixed(1)+','+y.toFixed(1);}
+    else{pathD+=' L'+x.toFixed(1)+','+y.toFixed(1);areaD+=' L'+x.toFixed(1)+','+y.toFixed(1);}
+  });
+  // Close area
+  var lastX=((points.length-1)*(W/(points.length-1||1))).toFixed(1);
+  areaD+=' L'+lastX+','+H+' Z';
+
+  // Area fill
+  var area=document.createElementNS('http://www.w3.org/2000/svg','path');
+  area.setAttribute('d',areaD);
+  area.setAttribute('fill',color);area.setAttribute('opacity','0.08');
+  svg.appendChild(area);
+
+  // Line
+  var path=document.createElementNS('http://www.w3.org/2000/svg','path');
+  path.setAttribute('d',pathD);
+  path.setAttribute('fill','none');path.setAttribute('stroke',color);
+  path.setAttribute('stroke-width','1.5');path.setAttribute('stroke-linecap','round');path.setAttribute('stroke-linejoin','round');
+  svg.appendChild(path);
+
+  // Dots + labels
+  points.forEach(function(p,i){
+    var x=points.length===1?W/2:i*(W/(points.length-1));
+    var y=H-((p[key]-min)/range)*(H*0.85)-H*0.075;
+    var circle=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    circle.setAttribute('cx',x.toFixed(1));circle.setAttribute('cy',y.toFixed(1));
+    circle.setAttribute('r','2.5');circle.setAttribute('fill',color);
+    svg.appendChild(circle);
+    // Value label on last and first
+    if(i===0||i===points.length-1){
+      var txt=document.createElementNS('http://www.w3.org/2000/svg','text');
+      txt.setAttribute('x',x.toFixed(1));txt.setAttribute('y',(y-6).toFixed(1));
+      txt.setAttribute('text-anchor',i===0?'start':'end');
+      txt.setAttribute('fill',color);txt.setAttribute('font-size','7');txt.setAttribute('font-weight','700');
+      txt.textContent=p[key]+(key==='avgWeight'?'kg':'');
+      svg.appendChild(txt);
+    }
+  });
+
+  // X axis labels (dates)
+  var xaxis=el('div',{style:'display:flex;justify-content:space-between;margin-top:4px;'});
+  points.forEach(function(p,i){
+    if(i===0||i===points.length-1||points.length<=4){
+      var lbl=elt('div',p.date.slice(5),{style:'font-size:9px;color:var(--t3);'});
+      xaxis.appendChild(lbl);
+    }
+  });
+
+  wrap.appendChild(svg);
+  wrap.appendChild(xaxis);
+  return wrap;
 }
 
 function renderCycleSession(wrap){
@@ -738,7 +922,7 @@ function renderNav(){
     b.innerHTML='<div class="ico">'+tab[1]+'</div><div class="lbl">'+tab[2].toUpperCase()+'</div>';
     b.onclick=function(){
       if(tab[0]==='log')S.step='muscle';
-      if(tab[0]==='cycle'&&S.view!=='cycle')S.cycleView='home';
+      if(tab[0]==='cycle'&&S.view!=='cycle'){S.cycleView='home';S._statsExo=null;}
       if(tab[0]==='enh'&&S.view!=='enh')S.enhUnlocked=false;
       S.view=tab[0];render();
     };
