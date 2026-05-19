@@ -165,6 +165,80 @@ abdos:[
 var WEIGHTS=[];for(var w=0;w<=250;w+=1.25)WEIGHTS.push(Math.round(w*100)/100);
 var REPS=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 var DAYS=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+var PRELOADED_CYCLE={
+  id:'ppl16s',
+  name:'PPL x2 — 16 Semaines',
+  startDate:'2025-01-01',
+  sessions:[
+    {id:'push1',name:'Push 1 — Lundi (Force)',exos:[
+      {name:'Développé couché — Barre libre',sets:5,reps:5,rest:240},
+      {name:'Développé incliné — Barre libre',sets:4,reps:6,rest:180},
+      {name:'Dips poitrine — Barres parallèles',sets:4,reps:6,rest:180},
+      {name:'Développé militaire — Haltères debout',sets:5,reps:5,rest:240},
+      {name:'Élévations latérales — Haltères debout',sets:4,reps:10,rest:120},
+      {name:'Barre au front — Barre EZ',sets:4,reps:7,rest:150},
+      {name:'Crunch — Sol',sets:4,reps:10,rest:90},
+    ]},
+    {id:'pull1',name:'Pull 1 — Mardi (Force)',exos:[
+      {name:'Soulevé de terre — Barre conventionnel',sets:5,reps:5,rest:240},
+      {name:'Traction — Prise large pronation',sets:5,reps:5,rest:180},
+      {name:'Rowing barre / poulie — Barre pronation',sets:4,reps:6,rest:180},
+      {name:'Curl — Barre EZ prise large',sets:4,reps:7,rest:150},
+      {name:'Curl — Câble bas barre droite',sets:4,reps:9,rest:120},
+      {name:'Curl — Câble bas poignée',sets:4,reps:11,rest:90},
+      {name:'Russian twist — Poulie',sets:3,reps:12,rest:90},
+    ]},
+    {id:'legs1',name:'Legs 1 — Mercredi (Force)',exos:[
+      {name:'Squat — Barre libre',sets:5,reps:5,rest:240},
+      {name:'Presse — Technogym',sets:4,reps:7,rest:180},
+      {name:'RDL / Deadlift roumain — Barre',sets:4,reps:7,rest:180},
+      {name:'Leg curl — Allongé Technogym',sets:4,reps:7,rest:150},
+      {name:'Hip thrust — Barre libre',sets:4,reps:8,rest:150},
+      {name:'Mollets — Machine debout Technogym Jaune',sets:5,reps:9,rest:120},
+      {name:'Mollets — Machine assis Technogym',sets:4,reps:11,rest:90},
+      {name:'Extension lombaire — Poids du corps',sets:4,reps:11,rest:90},
+    ]},
+    {id:'push2',name:'Push 2 — Jeudi (Hypertrophie)',exos:[
+      {name:'Développé couché — Haltères',sets:4,reps:11,rest:150},
+      {name:'Développé incliné — Haltères',sets:4,reps:11,rest:150},
+      {name:'Écarté — Câble croisé bas',sets:3,reps:15,rest:90},
+      {name:'Écarté — Pec-Deck Technogym',sets:3,reps:15,rest:90},
+      {name:'Développé militaire — Haltères assis',sets:4,reps:11,rest:150},
+      {name:'Élévations latérales — Câble bas unilatéral',sets:4,reps:15,rest:90},
+      {name:'Oiseau / Rear delt — Haltères debout',sets:4,reps:15,rest:90},
+      {name:'Face pull — Câble poulie haute corde',sets:3,reps:15,rest:90},
+      {name:'Extension câble — Corde poulie haute',sets:3,reps:13,rest:90},
+      {name:'Barre au front — Haltères',sets:3,reps:13,rest:90},
+      {name:'Crunch — Hammer Strength',sets:4,reps:13,rest:90},
+      {name:'Russian twist — Poulie',sets:3,reps:15,rest:60},
+    ]},
+    {id:'pull2',name:'Pull 2 — Vendredi (Hypertrophie)',exos:[
+      {name:'Traction — Prise neutre',sets:4,reps:11,rest:150},
+      {name:'Rowing barre / poulie — Machine Noire',sets:4,reps:11,rest:150},
+      {name:'Rowing barre / poulie — Haltère unilatéral',sets:4,reps:11,rest:120},
+      {name:'Pullover — Câble barre haute',sets:3,reps:13,rest:90},
+      {name:'Curl marteau — Haltères alterné',sets:4,reps:11,rest:120},
+      {name:'Curl — Haltères incliné',sets:3,reps:13,rest:90},
+      {name:'Curl — Haltères concentré',sets:3,reps:13,rest:90},
+      {name:'Curl — Câble bas barre droite',sets:4,reps:13,rest:90},
+      {name:'Curl — Câble bas poignée',sets:3,reps:15,rest:60},
+      {name:'Russian twist — Poulie',sets:3,reps:15,rest:90},
+    ]},
+    {id:'legs2',name:'Legs 2 — Samedi (Hypertrophie)',exos:[
+      {name:'Presse — Hack squat machine',sets:4,reps:11,rest:150},
+      {name:'Leg extension — Technogym Jaune',sets:4,reps:13,rest:90},
+      {name:'Fentes — Haltères marchées',sets:3,reps:12,rest:120},
+      {name:'Leg curl — Allongé Technogym',sets:4,reps:13,rest:120},
+      {name:'RDL / Deadlift roumain — Haltères',sets:3,reps:13,rest:120},
+      {name:'Hip thrust — Barre Smith',sets:4,reps:15,rest:90},
+      {name:'Mollets — Machine assis Technogym',sets:5,reps:17,rest:90},
+      {name:'Mollets — Machine debout Technogym Noire',sets:4,reps:17,rest:90},
+      {name:'Extension lombaire — Disque',sets:4,reps:13,rest:90},
+    ]},
+  ],
+  log:[]
+};
+
 var LS='ironlog-v5';
 var S={view:'log',step:'muscle',selMuscle:null,selExo:null,selVariant:null,sets:[],reps:8,weight:60,flashIdx:-1,restSecs:0,restDur:90,sessions:[],prs:{},pendingSync:[],lastSync:null,trainingCycles:[],activeTrainingCycle:null,cycleView:'home',activeCycleSession:null,_newCycle:null,_pickExoSesIdx:null,_pickExoMuscle:null,_pickExoExo:null,enhPinSet:null,enhUnlocked:false,enhCycles:[],activeEnhCycle:null,enhView:'home',_newEnh:null,_statsExo:null};
 var restIv=null;
@@ -178,6 +252,13 @@ function fmtD(d){return new Date(d).toLocaleDateString('fr-FR',{day:'2-digit',mo
 function showBanner(msg,type){var b=document.getElementById('sync-banner');b.textContent=msg;b.className=type;if(type==='ok'||type==='err')setTimeout(function(){b.className='';},3000);}
 async function syncSheets(sessions,prs){if(!SHEET_URL||SHEET_URL==='skip')return;showBanner('⏳ Sync...','syncing');try{var res=await fetch(SHEET_URL,{method:'POST',body:JSON.stringify({action:'syncAll',sessions:sessions,prs:prs})});var d=await res.json();if(d.ok){S.pendingSync=[];S.lastSync=new Date().toISOString();saveLocal();showBanner('✓ Synced — '+d.added+' nouvelles','ok');}else showBanner('⚠️ Erreur','err');}catch(e){showBanner('📵 Hors ligne','err');}}
 if(SHEET_URL&&SHEET_URL!=='skip'&&S.pendingSync.length>0)syncSheets(S.pendingSync,S.prs);
+
+// Charge le cycle PPL si aucun cycle n'existe encore
+if(S.trainingCycles.length===0){
+  S.trainingCycles=[PRELOADED_CYCLE];
+  S.activeTrainingCycle=PRELOADED_CYCLE.id;
+  saveLocal();
+}
 
 async function reqNotif(){if(!('Notification'in window))return false;if(Notification.permission==='granted')return true;return(await Notification.requestPermission())==='granted';}
 function schedNotif(dateStr,name){if(!('Notification'in window)||Notification.permission!=='granted')return;var t=new Date(dateStr);t.setHours(8,0,0,0);var delay=t-new Date();if(delay>0)setTimeout(function(){new Notification('💉 Injection aujourd\'hui',{body:name+' — N\'oublie pas !'});},delay);}
