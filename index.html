@@ -59,8 +59,8 @@ h2{font-size:26px;font-weight:900;color:var(--t1);margin-bottom:4px;}
 .pickers-zone{background:#0e0e1a;border-radius:16px;padding:0 8px;display:flex;align-items:center;justify-content:center;}
 .picker-col{flex:1;display:flex;flex-direction:column;align-items:center;}
 .picker-lbl{font-size:10px;color:var(--t3);letter-spacing:3px;padding:10px 0 4px;}
-.picker-wrap{position:relative;width:100%;height:176px;}
-.picker{height:176px;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.picker-wrap{position:relative;width:100%;height:220px;}
+.picker{height:220px;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
 .picker::-webkit-scrollbar{display:none;}
 .picker-item{height:44px;display:flex;align-items:center;justify-content:center;scroll-snap-align:center;font-size:22px;font-weight:600;color:#333;font-variant-numeric:tabular-nums;user-select:none;}
 .picker-item.sel{color:var(--t1);font-size:30px;font-weight:800;}
@@ -171,69 +171,69 @@ var PRELOADED_CYCLE={
   startDate:'2026-06-01',
   sessions:[
     {id:'push1',name:'Push 1 — Lundi (Force)',exos:[
-      {name:'Développé couché — Barre libre',sets:5,reps:5,rest:240},
-      {name:'Développé incliné — Barre libre',sets:4,reps:6,rest:180},
-      {name:'Dips poitrine — Barres parallèles',sets:4,reps:6,rest:180},
-      {name:'Développé militaire — Haltères debout',sets:5,reps:5,rest:240},
-      {name:'Élévations latérales — Haltères debout',sets:4,reps:10,rest:120},
-      {name:'Barre au front — Barre EZ',sets:4,reps:7,rest:150},
-      {name:'Crunch — Sol',sets:4,reps:10,rest:90},
+      {name:'Développé couché — Barre libre',sets:5,reps:5,rest:240,defaultWeight:90},
+      {name:'Développé incliné — Barre libre',sets:4,reps:6,rest:180,defaultWeight:70},
+      {name:'Dips poitrine — Barres parallèles',sets:4,reps:6,rest:180,defaultWeight:0},
+      {name:'Développé militaire — Haltères debout',sets:5,reps:5,rest:240,defaultWeight:28},
+      {name:'Élévations latérales — Haltères debout',sets:4,reps:10,rest:120,defaultWeight:14},
+      {name:'Barre au front — Barre EZ',sets:4,reps:7,rest:150,defaultWeight:40},
+      {name:'Crunch — Sol',sets:4,reps:10,rest:90,defaultWeight:0},
     ]},
     {id:'pull1',name:'Pull 1 — Mardi (Force)',exos:[
-      {name:'Soulevé de terre — Barre conventionnel',sets:5,reps:5,rest:240},
-      {name:'Traction — Prise large pronation',sets:5,reps:5,rest:180},
-      {name:'Rowing barre / poulie — Barre pronation',sets:4,reps:6,rest:180},
-      {name:'Curl — Barre EZ prise large',sets:4,reps:7,rest:150},
-      {name:'Curl — Câble bas barre droite',sets:4,reps:9,rest:120},
-      {name:'Curl — Câble bas poignée',sets:4,reps:11,rest:90},
-      {name:'Russian twist — Poulie',sets:3,reps:12,rest:90},
+      {name:'Soulevé de terre — Barre conventionnel',sets:5,reps:5,rest:240,defaultWeight:120},
+      {name:'Traction — Prise large pronation',sets:5,reps:5,rest:180,defaultWeight:0},
+      {name:'Rowing barre / poulie — Barre pronation',sets:4,reps:6,rest:180,defaultWeight:60},
+      {name:'Curl — Barre EZ prise large',sets:4,reps:7,rest:150,defaultWeight:30},
+      {name:'Curl — Câble bas barre droite',sets:4,reps:9,rest:120,defaultWeight:20},
+      {name:'Curl — Câble bas poignée',sets:4,reps:11,rest:90,defaultWeight:15},
+      {name:'Russian twist — Poulie',sets:3,reps:12,rest:90,defaultWeight:10},
     ]},
     {id:'legs1',name:'Legs 1 — Mercredi (Force)',exos:[
-      {name:'Squat — Barre libre',sets:5,reps:5,rest:240},
-      {name:'Presse — Technogym',sets:4,reps:7,rest:180},
-      {name:'RDL / Deadlift roumain — Barre',sets:4,reps:7,rest:180},
-      {name:'Leg curl — Allongé Technogym',sets:4,reps:7,rest:150},
-      {name:'Hip thrust — Barre libre',sets:4,reps:8,rest:150},
-      {name:'Mollets — Machine debout Technogym Jaune',sets:5,reps:9,rest:120},
-      {name:'Mollets — Machine assis Technogym',sets:4,reps:11,rest:90},
-      {name:'Extension lombaire — Poids du corps',sets:4,reps:11,rest:90},
+      {name:'Squat — Barre libre',sets:5,reps:5,rest:240,defaultWeight:90},
+      {name:'Presse — Technogym',sets:4,reps:7,rest:180,defaultWeight:200},
+      {name:'RDL / Deadlift roumain — Barre',sets:4,reps:7,rest:180,defaultWeight:80},
+      {name:'Leg curl — Allongé Technogym',sets:4,reps:7,rest:150,defaultWeight:75},
+      {name:'Hip thrust — Barre libre',sets:4,reps:8,rest:150,defaultWeight:80},
+      {name:'Mollets — Machine debout Technogym Jaune',sets:5,reps:9,rest:120,defaultWeight:60},
+      {name:'Mollets — Machine assis Technogym',sets:4,reps:11,rest:90,defaultWeight:40},
+      {name:'Extension lombaire — Poids du corps',sets:4,reps:11,rest:90,defaultWeight:0},
     ]},
     {id:'push2',name:'Push 2 — Jeudi (Hypertrophie)',exos:[
-      {name:'Développé couché — Haltères',sets:4,reps:11,rest:150},
-      {name:'Développé incliné — Haltères',sets:4,reps:11,rest:150},
-      {name:'Écarté — Câble croisé bas',sets:3,reps:15,rest:90},
-      {name:'Écarté — Pec-Deck Technogym',sets:3,reps:15,rest:90},
-      {name:'Développé militaire — Haltères assis',sets:4,reps:11,rest:150},
-      {name:'Élévations latérales — Câble bas unilatéral',sets:4,reps:15,rest:90},
-      {name:'Oiseau / Rear delt — Haltères debout',sets:4,reps:15,rest:90},
-      {name:'Face pull — Câble poulie haute corde',sets:3,reps:15,rest:90},
-      {name:'Extension câble — Corde poulie haute',sets:3,reps:13,rest:90},
-      {name:'Barre au front — Haltères',sets:3,reps:13,rest:90},
-      {name:'Crunch — Hammer Strength',sets:4,reps:13,rest:90},
-      {name:'Russian twist — Poulie',sets:3,reps:15,rest:60},
+      {name:'Développé couché — Haltères',sets:4,reps:11,rest:150,defaultWeight:36},
+      {name:'Développé incliné — Haltères',sets:4,reps:11,rest:150,defaultWeight:30},
+      {name:'Écarté — Câble croisé bas',sets:3,reps:15,rest:90,defaultWeight:12},
+      {name:'Écarté — Pec-Deck Technogym',sets:3,reps:15,rest:90,defaultWeight:40},
+      {name:'Développé militaire — Haltères assis',sets:4,reps:11,rest:150,defaultWeight:28},
+      {name:'Élévations latérales — Câble bas unilatéral',sets:4,reps:15,rest:90,defaultWeight:8},
+      {name:'Oiseau / Rear delt — Haltères debout',sets:4,reps:15,rest:90,defaultWeight:10},
+      {name:'Face pull — Câble poulie haute corde',sets:3,reps:15,rest:90,defaultWeight:15},
+      {name:'Extension câble — Corde poulie haute',sets:3,reps:13,rest:90,defaultWeight:20},
+      {name:'Barre au front — Haltères',sets:3,reps:13,rest:90,defaultWeight:16},
+      {name:'Crunch — Hammer Strength',sets:4,reps:13,rest:90,defaultWeight:40},
+      {name:'Russian twist — Poulie',sets:3,reps:15,rest:60,defaultWeight:10},
     ]},
     {id:'pull2',name:'Pull 2 — Vendredi (Hypertrophie)',exos:[
-      {name:'Traction — Prise neutre',sets:4,reps:11,rest:150},
-      {name:'Rowing barre / poulie — Machine Noire',sets:4,reps:11,rest:150},
-      {name:'Rowing barre / poulie — Haltère unilatéral',sets:4,reps:11,rest:120},
-      {name:'Pullover — Câble barre haute',sets:3,reps:13,rest:90},
-      {name:'Curl marteau — Haltères alterné',sets:4,reps:11,rest:120},
-      {name:'Curl — Haltères incliné',sets:3,reps:13,rest:90},
-      {name:'Curl — Haltères concentré',sets:3,reps:13,rest:90},
-      {name:'Curl — Câble bas barre droite',sets:4,reps:13,rest:90},
-      {name:'Curl — Câble bas poignée',sets:3,reps:15,rest:60},
-      {name:'Russian twist — Poulie',sets:3,reps:15,rest:90},
+      {name:'Traction — Prise neutre',sets:4,reps:11,rest:150,defaultWeight:0},
+      {name:'Rowing barre / poulie — Machine Noire',sets:4,reps:11,rest:150,defaultWeight:60},
+      {name:'Rowing barre / poulie — Haltère unilatéral',sets:4,reps:11,rest:120,defaultWeight:30},
+      {name:'Pullover — Câble barre haute',sets:3,reps:13,rest:90,defaultWeight:25},
+      {name:'Curl marteau — Haltères alterné',sets:4,reps:11,rest:120,defaultWeight:18},
+      {name:'Curl — Haltères incliné',sets:3,reps:13,rest:90,defaultWeight:14},
+      {name:'Curl — Haltères concentré',sets:3,reps:13,rest:90,defaultWeight:14},
+      {name:'Curl — Câble bas barre droite',sets:4,reps:13,rest:90,defaultWeight:20},
+      {name:'Curl — Câble bas poignée',sets:3,reps:15,rest:60,defaultWeight:15},
+      {name:'Russian twist — Poulie',sets:3,reps:15,rest:90,defaultWeight:10},
     ]},
     {id:'legs2',name:'Legs 2 — Samedi (Hypertrophie)',exos:[
-      {name:'Presse — Hack squat machine',sets:4,reps:11,rest:150},
-      {name:'Leg extension — Technogym Jaune',sets:4,reps:13,rest:90},
-      {name:'Fentes — Haltères marchées',sets:3,reps:12,rest:120},
-      {name:'Leg curl — Allongé Technogym',sets:4,reps:13,rest:120},
-      {name:'RDL / Deadlift roumain — Haltères',sets:3,reps:13,rest:120},
-      {name:'Hip thrust — Barre Smith',sets:4,reps:15,rest:90},
-      {name:'Mollets — Machine assis Technogym',sets:5,reps:17,rest:90},
-      {name:'Mollets — Machine debout Technogym Noire',sets:4,reps:17,rest:90},
-      {name:'Extension lombaire — Disque',sets:4,reps:13,rest:90},
+      {name:'Presse — Hack squat machine',sets:4,reps:11,rest:150,defaultWeight:100},
+      {name:'Leg extension — Technogym Jaune',sets:4,reps:13,rest:90,defaultWeight:60},
+      {name:'Fentes — Haltères marchées',sets:3,reps:12,rest:120,defaultWeight:20},
+      {name:'Leg curl — Allongé Technogym',sets:4,reps:13,rest:120,defaultWeight:60},
+      {name:'RDL / Deadlift roumain — Haltères',sets:3,reps:13,rest:120,defaultWeight:30},
+      {name:'Hip thrust — Barre Smith',sets:4,reps:15,rest:90,defaultWeight:80},
+      {name:'Mollets — Machine assis Technogym',sets:5,reps:17,rest:90,defaultWeight:40},
+      {name:'Mollets — Machine debout Technogym Noire',sets:4,reps:17,rest:90,defaultWeight:60},
+      {name:'Extension lombaire — Disque',sets:4,reps:13,rest:90,defaultWeight:10},
     ]},
   ],
   log:[]
@@ -804,10 +804,10 @@ function renderCycleSession(wrap){
   if(lastSes){var lp=el('div',{style:'background:#0a0f1a;border:1px solid var(--border);border-radius:10px;padding:10px 14px;'});lp.innerHTML='<div style="font-size:10px;color:var(--t3);letter-spacing:2px;margin-bottom:4px;">DERNIÈRE FOIS</div><div style="display:flex;flex-wrap:wrap;gap:5px;">'+lastSes.sets.map(function(s){return '<div style="background:#1a1a28;border-radius:6px;padding:3px 9px;font-size:12px;color:#888;">'+s.reps+'×'+s.weight+'kg</div>';}).join('')+'</div>';scroll.appendChild(lp);}
   var zone=el('div',{class:'pickers-zone'});
   var rc=el('div',{class:'picker-col'});rc.appendChild(elt('div','REPS',{class:'picker-lbl'}));
-  rc.appendChild(makePicker(REPS,S.reps,function(val){S.reps=val;},function(v){return String(v);}));zone.appendChild(rc);
+  var defaultReps=S.reps||exo.reps||8;rc.appendChild(makePicker(REPS,defaultReps,function(val){S.reps=val;},function(v){return String(v);}));zone.appendChild(rc);
   var sep=elt('div','×',{class:'picker-sep'});zone.appendChild(sep);
   var wc=el('div',{class:'picker-col',style:'flex:1.6;'});wc.appendChild(elt('div','CHARGE (kg)',{class:'picker-lbl'}));
-  var lastW=(lastSes&&lastSes.sets[ses.currentSetIdx])?lastSes.sets[ses.currentSetIdx].weight:S.weight;
+  var lastW=(lastSes&&lastSes.sets[ses.currentSetIdx])?lastSes.sets[ses.currentSetIdx].weight:(exo.defaultWeight||S.weight);
   wc.appendChild(makePicker(WEIGHTS,lastW,function(val){S.weight=val;},function(v){return Number.isInteger(v)?String(v):String(v);}));zone.appendChild(wc);
   scroll.appendChild(zone);
   var sv=el('button',{class:'save-btn ready'});
@@ -962,6 +962,11 @@ function renderEnhDetail(wrap){
   var sg=el('div',{class:'stat-grid'});
   [{l:'Total',v:total},{l:'Faites',v:done},{l:'Restantes',v:total-done}].forEach(function(x){var b=el('div',{class:'stat-box'});b.innerHTML='<div class="stat-val" style="color:var(--purple);">'+x.v+'</div><div class="stat-lbl">'+x.l.toUpperCase()+'</div>';sg.appendChild(b);});
   scroll.appendChild(sg);
+  // Export to calendar button
+  var expCal=el('button',{style:'width:100%;padding:13px;background:#0a0a1a;border:1px solid var(--purple);border-radius:12px;color:var(--purple);font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;margin-bottom:16px;letter-spacing:1px;'});
+  expCal.textContent='📅 EXPORTER VERS CALENDRIER IPHONE';
+  expCal.onclick=function(){exportInjToCalendar(cyc);};
+  scroll.appendChild(expCal);
   scroll.appendChild(elt('div','CALENDRIER DES INJECTIONS',{class:'sec-lbl'}));
   if(!cyc.injections||!cyc.injections.length){scroll.appendChild(elt('div','Aucune injection planifiée',{style:'color:var(--t3);text-align:center;padding:20px 0;'}));}
   else{
@@ -980,6 +985,37 @@ function renderEnhDetail(wrap){
     });
   }
   wrap.appendChild(scroll);
+}
+
+function exportInjToCalendar(cyc){
+  var lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//IronLog//FR','CALSCALE:GREGORIAN','METHOD:PUBLISH'];
+  (cyc.injections||[]).forEach(function(inj){
+    if(inj.done) return;
+    var d=inj.date.replace(/-/g,'');
+    var prodStr=inj.products.map(function(p){return p.name+' '+p.dose+p.unit;}).join(' + ');
+    lines.push('BEGIN:VEVENT');
+    lines.push('UID:ironlog-inj-'+inj.id+'@ironlog');
+    lines.push('DTSTART;VALUE=DATE:'+d);
+    lines.push('DTEND;VALUE=DATE:'+d);
+    lines.push('SUMMARY:💉 Injection — '+prodStr);
+    lines.push('DESCRIPTION:'+prodStr+'\nIronLog — Enhancement');
+    lines.push('ALARM;TRIGGER:T080000');
+    lines.push('BEGIN:VALARM');
+    lines.push('TRIGGER:-PT0M');
+    lines.push('ACTION:DISPLAY');
+    lines.push('DESCRIPTION:💉 Injection aujourd\'hui — '+prodStr);
+    lines.push('END:VALARM');
+    lines.push('END:VEVENT');
+  });
+  lines.push('END:VCALENDAR');
+  var ics=lines.join('\r\n');
+  var blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url;
+  a.download='injections-ironlog.ics';
+  document.body.appendChild(a);a.click();
+  document.body.removeChild(a);URL.revokeObjectURL(url);
 }
 
 function markInjDone(cycId,injId){
