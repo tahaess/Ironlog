@@ -1125,7 +1125,20 @@ function renderNav(){
     var b=el('button',{class:S.view===tab[0]?'active':''});
     b.innerHTML='<div class="ico">'+tab[1]+'</div><div class="lbl">'+tab[2].toUpperCase()+'</div>';
     b.onclick=function(){
-      if(tab[0]==='log')S.step='muscle';
+      if(tab[0]==='log'){
+        // Try to restore draft first
+        try{
+          var draft=JSON.parse(localStorage.getItem('ironlog-draft')||'null');
+          if(draft&&draft.sets&&draft.sets.length&&draft.selExo&&draft.selMuscle){
+            S.step='logging';S.sets=draft.sets;S.reps=draft.reps||8;S.weight=draft.weight||60;
+            S.sessionDate=draft.sessionDate||today();
+            S.selMuscle=draft.selMuscle;S.selExo=draft.selExo;S.selVariant=draft.selVariant;
+            S.editSetIdx=-1;S.flashIdx=-1;
+          } else {
+            S.step='muscle';
+          }
+        }catch(e){S.step='muscle';}
+      }
       if(tab[0]==='cycle'&&S.view!=='cycle'){S.cycleView='home';S._statsExo=null;}
       if(tab[0]==='enh'&&S.view!=='enh')S.enhUnlocked=false;
       S.view=tab[0];render();
