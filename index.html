@@ -257,6 +257,8 @@ function fmtD(d){return new Date(d).toLocaleDateString('fr-FR',{day:'2-digit',mo
 function showBanner(msg,type){var b=document.getElementById('sync-banner');b.textContent=msg;b.className=type;if(type==='ok'||type==='err')setTimeout(function(){b.className='';},3000);}
 async function syncSheets(sessions,prs){if(!SHEET_URL||SHEET_URL==='skip')return;showBanner('⏳ Sync...','syncing');try{var res=await fetch(SHEET_URL,{method:'POST',body:JSON.stringify({action:'syncAll',sessions:sessions,prs:prs})});var d=await res.json();if(d.ok){S.pendingSync=[];S.lastSync=new Date().toISOString();saveLocal();showBanner('✓ Synced — '+d.added+' nouvelles','ok');}else showBanner('⚠️ Erreur','err');}catch(e){showBanner('📵 Hors ligne','err');}}
 if(SHEET_URL&&SHEET_URL!=='skip'&&S.pendingSync.length>0)syncSheets(S.pendingSync,S.prs);
+// Restore draft session if exists
+if(loadDraft()){render();}
 
 // Charge le cycle PPL si aucun cycle n'existe encore
 if(S.trainingCycles.length===0){
@@ -336,6 +338,15 @@ function renderMuscle(wrap){
   scroll.appendChild(elt('div','IRON LOG',{style:'font-size:10px;color:#444;letter-spacing:5px;margin-bottom:4px;'}));
   scroll.appendChild(elt('h2','Muscle ?'));
   var atc=S.trainingCycles.find(function(c){return c.id===S.activeTrainingCycle;});
+  // Draft banner
+  try{var draft=JSON.parse(localStorage.getItem('ironlog-draft')||'null');
+  if(draft&&draft.sets&&draft.sets.length){
+    var db=el('div',{style:'background:#1a0a00;border:1px solid var(--acc);border-radius:10px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;'});
+    db.innerHTML='<div><div style="font-size:10px;color:var(--acc);letter-spacing:2px;">SÉANCE EN COURS</div><div style="font-size:13px;font-weight:700;">'+(draft.selExo?draft.selExo.n:'...')+' · '+draft.sets.length+' set'+(draft.sets.length>1?'s':'')+'</div></div>';
+    var rb=el('button',{style:'background:var(--acc);border:none;color:#fff;border-radius:8px;padding:6px 12px;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;'});
+    rb.textContent='REPRENDRE ›';rb.onclick=function(){loadDraft();render();};db.appendChild(rb);
+    scroll.appendChild(db);
+  }}catch(e){}
   if(atc){
     var ind=el('div',{style:'background:#0a0f1a;border:1px solid var(--blue);border-radius:10px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;'});
     ind.innerHTML='<div><div style="font-size:10px;color:var(--blue);letter-spacing:2px;">CYCLE ACTIF</div><div style="font-size:13px;font-weight:700;color:#fff;">'+atc.name+'</div></div>';
@@ -396,7 +407,14 @@ function renderLogging(wrap){
   top.appendChild(info);top.appendChild(fin);hdr.appendChild(top);
   if(S.sets.length){
     var chips=el('div',{class:'chips'});
-    S.sets.forEach(function(s,i){var c=el('div',{class:'chip'+(i===S.flashIdx?' flash':'')});c.textContent='S'+(i+1)+' · '+s.reps+'×'+s.weight;chips.appendChild(c);});
+    S.sets.forEach(function(s,i){
+      var c=el('div',{class:'chip'+(i===S.flashIdx?' flash':''),style:'display:flex;align-items:center;gap:6px;padding-right:8px;'});
+      c.appendChild(elt('span','S'+(i+1)+' · '+s.reps+'×'+s.weight));
+      var del=el('button',{style:'background:none;border:none;color:rgba(255,255,255,0.5);font-size:14px;cursor:pointer;padding:0;line-height:1;'});
+      del.textContent='×';
+      del.onclick=function(e){e.stopPropagation();S.sets.splice(i,1);S.flashIdx=-1;saveDraft();render();};
+      c.appendChild(del);chips.appendChild(c);
+    });
     var nx=elt('div','S'+(S.sets.length+1),{class:'chip next'});chips.appendChild(nx);hdr.appendChild(chips);
   }
   if(S.restSecs>0){
@@ -1096,7 +1114,26 @@ function renderNav(){
 }
 
 function updSB(){var sb=document.getElementById('save-btn');if(sb)sb.className='save-btn '+(S.reps&&S.weight?'ready':'empty');}
-function saveSet(){if(!S.reps||!S.weight)return;S.sets.push({reps:S.reps,weight:S.weight});S.flashIdx=S.sets.length-1;startRest(90);render();setTimeout(function(){S.flashIdx=-1;},500);}
+function saveSet(){if(!S.reps||!S.weight)return;S.sets.push({reps:S.reps,weight:S.weight});S.flashIdx=S.sets.length-1;startRest(90);saveDraft();render();setTimeout(function(){S.flashIdx=-1;},500);}
+function saveDraft(){
+  try{localStorage.setItem('ironlog-draft',JSON.stringify({
+    step:S.step,sets:S.sets,reps:S.reps,weight:S.weight,
+    selMuscle:S.selMuscle,selExo:S.selExo,selVariant:S.selVariant,
+    fromCycle:S._draftFromCycle||false,
+    cycleSession:S.activeCycleSession?JSON.stringify(S.activeCycleSession):null
+  }));}catch(e){}
+}
+function loadDraft(){
+  try{
+    var d=JSON.parse(localStorage.getItem('ironlog-draft')||'null');
+    if(!d||!d.sets||!d.sets.length)return false;
+    S.step='logging';S.sets=d.sets;S.reps=d.reps;S.weight=d.weight;
+    S.selMuscle=d.selMuscle;S.selExo=d.selExo;S.selVariant=d.selVariant;
+    if(d.fromCycle&&d.cycleSession){S.activeCycleSession=JSON.parse(d.cycleSession);S.cycleView='session';S.view='cycle';}
+    return true;
+  }catch(e){return false;}
+}
+function clearDraft(){try{localStorage.removeItem('ironlog-draft');}catch(e){}}
 function finishSession(){
   if(!S.sets.length){resetLog();return;}
   var exName=S.selExo.n+' — '+S.selVariant;
@@ -1108,7 +1145,7 @@ function finishSession(){
   if(SHEET_URL&&SHEET_URL!=='skip')syncSheets(S.pendingSync,S.prs);
   resetLog();
 }
-function resetLog(){clearInterval(restIv);S.sets=[];S.reps=8;S.flashIdx=-1;S.step='muscle';S.selMuscle=null;S.selExo=null;S.selVariant=null;S.restSecs=0;S.restDur=90;render();}
+function resetLog(){clearInterval(restIv);S.sets=[];S.reps=8;S.flashIdx=-1;S.step='muscle';S.selMuscle=null;S.selExo=null;S.selVariant=null;S.restSecs=0;S.restDur=90;clearDraft();render();}
 function startRest(secs){
   clearInterval(restIv);S.restSecs=secs;S.restDur=secs;
   restIv=setInterval(function(){S.restSecs--;var t=document.getElementById('rt'),f=document.getElementById('rf');if(t)t.textContent=S.restSecs+'s';if(f)f.style.width=Math.round((S.restSecs/S.restDur)*100)+'%';if(S.restSecs<=0){clearInterval(restIv);S.restSecs=0;}},1000);
