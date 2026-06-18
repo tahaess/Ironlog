@@ -20,59 +20,43 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:-apple-sy
 #app{height:100dvh;display:flex;flex-direction:column;max-width:430px;margin:0 auto;}
 .page{flex:1;display:flex;flex-direction:column;overflow:hidden;}
 .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 16px 16px;}
-.pt{padding-top:calc(var(--st) + 90px);}
-
-/* NAV */
+.pt{padding-top:calc(var(--st) + 110px);}
 nav{display:flex;background:#0a0a14;border-top:1px solid #111;padding-bottom:var(--sb);flex-shrink:0;}
 nav button{flex:1;padding:8px 0 5px;background:none;border:none;cursor:pointer;font-family:inherit;}
 nav .ni{font-size:18px;}
 nav .nl{font-size:8px;letter-spacing:1px;margin-top:2px;font-weight:700;}
 nav button.on .nl{color:var(--acc);}
 nav button:not(.on) .nl{color:var(--t3);}
-
-/* CARDS */
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:10px;}
 .csm{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:8px;}
 .sec{font-size:10px;color:var(--t3);letter-spacing:3px;margin-bottom:12px;}
 h2{font-size:26px;font-weight:900;margin-bottom:4px;}
 .sub{font-size:12px;color:var(--t3);margin-bottom:18px;}
-
-/* BUTTONS */
 .btn{width:100%;padding:15px;border:none;border-radius:12px;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer;letter-spacing:1px;margin-bottom:8px;}
-.btn-acc{background:var(--acc);color:#fff;}
-.btn-blue{background:var(--blue);color:#fff;}
-.btn-purple{background:var(--purple);color:#fff;}
-.btn-ghost{background:var(--bg2);border:1px solid var(--border);color:var(--t2);}
-.btn-danger{background:#1a0a0a;border:1px solid #3a1a1a;color:var(--red);}
+.acc{background:var(--acc);color:#fff;}
+.blue{background:var(--blue);color:#fff;}
+.purple{background:var(--purple);color:#fff;}
+.ghost{background:var(--bg2);border:1px solid var(--border);color:var(--t2);}
+.danger{background:#1a0a0a;border:1px solid #3a1a1a;color:var(--red);}
 .back{background:#151520;border:1px solid var(--border);color:var(--t2);border-radius:10px;padding:10px 14px;cursor:pointer;font-size:18px;flex-shrink:0;}
 .inp{width:100%;background:#111;border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--t1);font-family:inherit;font-size:14px;margin-bottom:10px;}
 .inp:focus{outline:none;border-color:var(--acc);}
 .lbl{font-size:10px;color:var(--t3);letter-spacing:3px;display:block;margin-bottom:6px;}
-
-/* MUSCLE GRID */
 .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .mbtn{padding:20px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;text-align:left;cursor:pointer;font-family:inherit;}
 .mbtn:active{border-color:var(--acc);}
-
-/* LIST */
 .lbtn{width:100%;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;text-align:left;cursor:pointer;font-family:inherit;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
 .lbtn:active{border-color:var(--acc);}
 .pr{color:var(--acc);font-size:12px;font-weight:800;flex-shrink:0;margin-left:8px;}
-
-/* LOG HEADER */
-.lhdr{padding:12px 16px;border-bottom:1px solid #111;background:#0c0c18;flex-shrink:0;padding-top:calc(var(--st) + 100px);}
-
-/* SETS LIST */
+.lhdr{padding:12px 16px 12px;border-bottom:1px solid #111;background:#0c0c18;flex-shrink:0;padding-top:calc(var(--st) + 110px);}
 .set-row{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;margin-bottom:6px;background:var(--bg2);border:1px solid var(--border);cursor:pointer;}
 .set-row.editing{border-color:var(--blue);background:#0a0f1a;}
 .set-row.saved{border-color:#1a3a1a;}
-
-/* PICKER */
 .pzone{background:#0e0e1a;border-radius:16px;padding:0 8px;display:flex;align-items:center;}
 .pcol{flex:1;display:flex;flex-direction:column;align-items:center;}
 .plbl{font-size:10px;color:var(--t3);letter-spacing:3px;padding:10px 0 4px;}
-.pwrap{position:relative;width:100%;height:308px;}
-.picker{height:308px;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.pwrap{position:relative;width:100%;height:264px;}
+.picker{height:264px;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
 .picker::-webkit-scrollbar{display:none;}
 .pitem{height:44px;display:flex;align-items:center;justify-content:center;scroll-snap-align:center;font-size:22px;font-weight:600;color:#333;font-variant-numeric:tabular-nums;user-select:none;}
 .pitem.sel{color:var(--t1);font-size:30px;font-weight:800;}
@@ -80,32 +64,21 @@ h2{font-size:26px;font-weight:900;margin-bottom:4px;}
 .pgt{position:absolute;top:0;left:0;right:0;height:88px;background:linear-gradient(to bottom,#0e0e1a,transparent);pointer-events:none;z-index:2;}
 .pgb{position:absolute;bottom:0;left:0;right:0;height:88px;background:linear-gradient(to top,#0e0e1a,transparent);pointer-events:none;z-index:2;}
 .pline{position:absolute;left:4px;right:4px;top:50%;transform:translateY(-50%);height:44px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);pointer-events:none;z-index:1;border-radius:8px;}
-.psep{font-size:28px;color:var(--t3);padding:0 4px;margin-top:132px;}
-
+.psep{font-size:28px;color:var(--t3);padding:0 4px;margin-top:110px;}
 .sbtn{width:100%;padding:16px;border-radius:14px;font-family:inherit;font-size:17px;font-weight:900;cursor:pointer;letter-spacing:1px;border:none;}
 .sbtn.rdy{background:var(--acc);color:#fff;}
 .sbtn.off{background:#111;border:1px solid var(--border);color:var(--t3);}
 .rbtn{flex:1;padding:10px 0;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--t2);font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;}
 .finbtn{border:1px solid var(--border);color:var(--t3);border-radius:10px;padding:10px 14px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:800;background:var(--bg3);}
 .finbtn.has{background:var(--acc);border-color:var(--acc);color:#fff;}
-
-/* STATS */
 .sgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;}
 .sbox{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center;}
 .sv{font-size:22px;font-weight:900;color:var(--acc);}
 .sl{font-size:10px;color:var(--t3);margin-top:4px;letter-spacing:2px;}
-.barchart{display:flex;align-items:flex-end;gap:4px;height:90px;margin-top:8px;}
-.bw{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
-.bar{width:100%;background:var(--acc);border-radius:4px 4px 0 0;opacity:.85;min-height:4px;}
-.blbl{font-size:9px;color:var(--t3);text-align:center;}
-
-/* CYCLE */
 .sesbtn{width:100%;padding:14px 16px;background:var(--bg2);border:2px solid var(--border);border-radius:12px;text-align:left;cursor:pointer;font-family:inherit;margin-bottom:8px;}
 .sesbtn:active{border-color:var(--blue);}
 .daypill{padding:8px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg2);font-size:13px;cursor:pointer;font-family:inherit;color:var(--t2);}
 .daypill.on{background:var(--purple);border-color:var(--purple);color:#fff;font-weight:700;}
-
-/* ENHANCEMENT */
 .pinwrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:16px;}
 .pdots{display:flex;gap:16px;margin:16px 0;}
 .pdot{width:16px;height:16px;border-radius:50%;background:var(--border);transition:background .2s;}
@@ -116,26 +89,67 @@ h2{font-size:26px;font-weight:900;margin-bottom:4px;}
 .injcard{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
 .injcard.done{border-color:var(--purple);background:#12091e;}
 .injcard.today{border-color:var(--acc);}
-
-/* SYNC BANNER */
 #banner{display:none;position:fixed;top:calc(var(--st)+8px);left:50%;transform:translateX(-50%);z-index:999;background:#1a1a2e;border:1px solid var(--border);border-radius:20px;padding:8px 16px;font-size:12px;font-weight:700;white-space:nowrap;}
 #banner.s{display:block;color:var(--acc);}
 #banner.ok{display:block;color:var(--green);}
 #banner.err{display:block;color:var(--red);}
+#loader{display:none;position:fixed;inset:0;background:rgba(8,8,16,.8);z-index:998;align-items:center;justify-content:center;font-size:14px;color:var(--t2);}
+#loader.show{display:flex;}
 </style>
 </head>
 <body>
 <div id="banner"></div>
+<div id="loader">Chargement...</div>
 <div id="app"></div>
 <script>
-// ═══════════════════════════════════════════════════════
-// CONFIG
-// ═══════════════════════════════════════════════════════
-var SHEET_URL=localStorage.getItem('il-url')||localStorage.getItem('ironlog-sheeturl')||'https://script.google.com/macros/s/AKfycbykREbm6JwWjUxUeKqraFH7j6IhJCCAC9qQpYMvmJbX5XvBr0KmH7k2MPkqLN2RrVg/exec';localStorage.setItem('il-url',SHEET_URL);
+// ═══ SUPABASE CONFIG ═══════════════════════════════════════════
+var SB_URL='https://ixmrekpmjdtxmevwodpb.supabase.co';
+var SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml4bXJla3BtamR0eG1ldndvZHBiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3ODUyOTksImV4cCI6MjA5NzM2MTI5OX0.zqG3IWLXCLnPSwI_ZK1_3AiyCaoMMebdyZ9lvwOoOhc';
 
-// ═══════════════════════════════════════════════════════
-// MUSCLES & EXERCISES
-// ═══════════════════════════════════════════════════════
+// ═══ SUPABASE API ═══════════════════════════════════════════════
+async function sbGet(table,params){
+  var url=SB_URL+'/rest/v1/'+table+'?'+params;
+  var r=await fetch(url,{headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}});
+  if(!r.ok)throw new Error(await r.text());
+  return r.json();
+}
+async function sbPost(table,data){
+  var r=await fetch(SB_URL+'/rest/v1/'+table,{
+    method:'POST',
+    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+    body:JSON.stringify(data)
+  });
+  if(!r.ok)throw new Error(await r.text());
+  return true;
+}
+async function sbUpsert(table,data){
+  var r=await fetch(SB_URL+'/rest/v1/'+table,{
+    method:'POST',
+    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'resolution=merge-duplicates,return=minimal'},
+    body:JSON.stringify(data)
+  });
+  if(!r.ok)throw new Error(await r.text());
+  return true;
+}
+async function sbDelete(table,params){
+  var r=await fetch(SB_URL+'/rest/v1/'+table+'?'+params,{
+    method:'DELETE',
+    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+  });
+  if(!r.ok)throw new Error(await r.text());
+  return true;
+}
+async function sbPatch(table,params,data){
+  var r=await fetch(SB_URL+'/rest/v1/'+table+'?'+params,{
+    method:'PATCH',
+    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+    body:JSON.stringify(data)
+  });
+  if(!r.ok)throw new Error(await r.text());
+  return true;
+}
+
+// ═══ DATA ═══════════════════════════════════════════════════════
 var MUSCLES=[
   {id:'poitrine',label:'Poitrine',emoji:'🏋️'},
   {id:'dos',label:'Dos',emoji:'💪'},
@@ -205,11 +219,11 @@ var EXO={
   ],
 };
 
-// ═══════════════════════════════════════════════════════
-// PRELOADED CYCLES
-// ═══════════════════════════════════════════════════════
+var ENH_MAIN={"id": "enh_main", "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg", "form": "injection"}, {"name": "Boldenone", "dose": "200", "unit": "mg", "form": "injection"}, {"name": "Masteron", "dose": "200", "unit": "mg", "form": "injection"}, {"name": "Arimidex", "dose": "0.25", "unit": "mg", "form": "oral"}], "weeks": 16, "startDate": "2026-06-18", "freqDays": [0, 3], "injections": [{"id": "inj0", "date": "2026-06-18", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj1", "date": "2026-06-22", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj2", "date": "2026-06-25", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj3", "date": "2026-06-29", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj4", "date": "2026-07-02", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj5", "date": "2026-07-06", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj6", "date": "2026-07-09", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj7", "date": "2026-07-13", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj8", "date": "2026-07-16", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj9", "date": "2026-07-20", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj10", "date": "2026-07-23", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj11", "date": "2026-07-27", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj12", "date": "2026-07-30", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj13", "date": "2026-08-03", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj14", "date": "2026-08-06", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj15", "date": "2026-08-10", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj16", "date": "2026-08-13", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj17", "date": "2026-08-17", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj18", "date": "2026-08-20", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj19", "date": "2026-08-24", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj20", "date": "2026-08-27", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj21", "date": "2026-08-31", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj22", "date": "2026-09-03", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj23", "date": "2026-09-07", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj24", "date": "2026-09-10", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj25", "date": "2026-09-14", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj26", "date": "2026-09-17", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj27", "date": "2026-09-21", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj28", "date": "2026-09-24", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj29", "date": "2026-09-28", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj30", "date": "2026-10-01", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj31", "date": "2026-10-05", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj32", "date": "2026-10-08", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}]};
+var ENH_GH={"id": "enh_gh", "products": [{"name": "GH", "dose": "5", "unit": "UI", "form": "injection"}], "weeks": 26, "startDate": "2026-06-05", "freqDays": [0, 1, 2, 3, 4, 5, 6], "injections": [{"id": "gh0", "date": "2026-06-05", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh1", "date": "2026-06-06", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh2", "date": "2026-06-07", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh3", "date": "2026-06-08", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh4", "date": "2026-06-09", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh5", "date": "2026-06-10", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh6", "date": "2026-06-11", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh7", "date": "2026-06-12", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh8", "date": "2026-06-13", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh9", "date": "2026-06-14", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh10", "date": "2026-06-15", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh11", "date": "2026-06-16", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh12", "date": "2026-06-17", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh13", "date": "2026-06-18", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh14", "date": "2026-06-19", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh15", "date": "2026-06-20", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh16", "date": "2026-06-21", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh17", "date": "2026-06-22", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh18", "date": "2026-06-23", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh19", "date": "2026-06-24", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh20", "date": "2026-06-25", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh21", "date": "2026-06-26", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh22", "date": "2026-06-27", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh23", "date": "2026-06-28", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh24", "date": "2026-06-29", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh25", "date": "2026-06-30", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh26", "date": "2026-07-01", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh27", "date": "2026-07-02", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh28", "date": "2026-07-03", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh29", "date": "2026-07-04", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh30", "date": "2026-07-05", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh31", "date": "2026-07-06", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh32", "date": "2026-07-07", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh33", "date": "2026-07-08", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh34", "date": "2026-07-09", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh35", "date": "2026-07-10", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh36", "date": "2026-07-11", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh37", "date": "2026-07-12", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh38", "date": "2026-07-13", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh39", "date": "2026-07-14", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh40", "date": "2026-07-15", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh41", "date": "2026-07-16", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh42", "date": "2026-07-17", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh43", "date": "2026-07-18", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh44", "date": "2026-07-19", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh45", "date": "2026-07-20", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh46", "date": "2026-07-21", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh47", "date": "2026-07-22", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh48", "date": "2026-07-23", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh49", "date": "2026-07-24", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh50", "date": "2026-07-25", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh51", "date": "2026-07-26", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh52", "date": "2026-07-27", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh53", "date": "2026-07-28", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh54", "date": "2026-07-29", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh55", "date": "2026-07-30", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh56", "date": "2026-07-31", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh57", "date": "2026-08-01", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh58", "date": "2026-08-02", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh59", "date": "2026-08-03", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh60", "date": "2026-08-04", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh61", "date": "2026-08-05", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh62", "date": "2026-08-06", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh63", "date": "2026-08-07", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh64", "date": "2026-08-08", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh65", "date": "2026-08-09", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh66", "date": "2026-08-10", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh67", "date": "2026-08-11", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh68", "date": "2026-08-12", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh69", "date": "2026-08-13", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh70", "date": "2026-08-14", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh71", "date": "2026-08-15", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh72", "date": "2026-08-16", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh73", "date": "2026-08-17", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh74", "date": "2026-08-18", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh75", "date": "2026-08-19", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh76", "date": "2026-08-20", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh77", "date": "2026-08-21", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh78", "date": "2026-08-22", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh79", "date": "2026-08-23", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh80", "date": "2026-08-24", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh81", "date": "2026-08-25", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh82", "date": "2026-08-26", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh83", "date": "2026-08-27", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh84", "date": "2026-08-28", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh85", "date": "2026-08-29", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh86", "date": "2026-08-30", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh87", "date": "2026-08-31", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh88", "date": "2026-09-01", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh89", "date": "2026-09-02", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh90", "date": "2026-09-03", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh91", "date": "2026-09-04", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh92", "date": "2026-09-05", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh93", "date": "2026-09-06", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh94", "date": "2026-09-07", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh95", "date": "2026-09-08", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh96", "date": "2026-09-09", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh97", "date": "2026-09-10", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh98", "date": "2026-09-11", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh99", "date": "2026-09-12", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh100", "date": "2026-09-13", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh101", "date": "2026-09-14", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh102", "date": "2026-09-15", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh103", "date": "2026-09-16", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh104", "date": "2026-09-17", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh105", "date": "2026-09-18", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh106", "date": "2026-09-19", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh107", "date": "2026-09-20", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh108", "date": "2026-09-21", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh109", "date": "2026-09-22", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh110", "date": "2026-09-23", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh111", "date": "2026-09-24", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh112", "date": "2026-09-25", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh113", "date": "2026-09-26", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh114", "date": "2026-09-27", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh115", "date": "2026-09-28", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh116", "date": "2026-09-29", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh117", "date": "2026-09-30", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh118", "date": "2026-10-01", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh119", "date": "2026-10-02", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh120", "date": "2026-10-03", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh121", "date": "2026-10-04", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh122", "date": "2026-10-05", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh123", "date": "2026-10-06", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh124", "date": "2026-10-07", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh125", "date": "2026-10-08", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh126", "date": "2026-10-09", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh127", "date": "2026-10-10", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh128", "date": "2026-10-11", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh129", "date": "2026-10-12", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh130", "date": "2026-10-13", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh131", "date": "2026-10-14", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh132", "date": "2026-10-15", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh133", "date": "2026-10-16", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh134", "date": "2026-10-17", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh135", "date": "2026-10-18", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh136", "date": "2026-10-19", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh137", "date": "2026-10-20", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh138", "date": "2026-10-21", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh139", "date": "2026-10-22", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh140", "date": "2026-10-23", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh141", "date": "2026-10-24", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh142", "date": "2026-10-25", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh143", "date": "2026-10-26", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh144", "date": "2026-10-27", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh145", "date": "2026-10-28", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh146", "date": "2026-10-29", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh147", "date": "2026-10-30", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh148", "date": "2026-10-31", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh149", "date": "2026-11-01", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh150", "date": "2026-11-02", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh151", "date": "2026-11-03", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh152", "date": "2026-11-04", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh153", "date": "2026-11-05", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh154", "date": "2026-11-06", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh155", "date": "2026-11-07", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh156", "date": "2026-11-08", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh157", "date": "2026-11-09", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh158", "date": "2026-11-10", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh159", "date": "2026-11-11", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh160", "date": "2026-11-12", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh161", "date": "2026-11-13", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh162", "date": "2026-11-14", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh163", "date": "2026-11-15", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh164", "date": "2026-11-16", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh165", "date": "2026-11-17", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh166", "date": "2026-11-18", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh167", "date": "2026-11-19", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh168", "date": "2026-11-20", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh169", "date": "2026-11-21", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh170", "date": "2026-11-22", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh171", "date": "2026-11-23", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh172", "date": "2026-11-24", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh173", "date": "2026-11-25", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh174", "date": "2026-11-26", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh175", "date": "2026-11-27", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh176", "date": "2026-11-28", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh177", "date": "2026-11-29", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh178", "date": "2026-11-30", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh179", "date": "2026-12-01", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh180", "date": "2026-12-02", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh181", "date": "2026-12-03", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}]};
+
 var PRELOADED_CYCLE={
-  id:'ppl16',name:'PPL x2 — 16 Semaines (Définitif v3)',startDate:'2026-06-08',
+  id:'ppl16',name:'PPL x2 — 16 Semaines',startDate:'2026-06-08',
   sessions:[
     {id:'pull1',name:'Lundi — PULL 1 (Force)',exos:[
       {name:'Soulevé de terre — Barre conventionnel',sets:5,reps:5,rest:180,dw:120},
@@ -275,198 +289,194 @@ var PRELOADED_CYCLE={
   log:[]
 };
 
-var ENH_MAIN={"id": "enh_main", "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg", "form": "injection"}, {"name": "Boldenone", "dose": "200", "unit": "mg", "form": "injection"}, {"name": "Masteron", "dose": "200", "unit": "mg", "form": "injection"}, {"name": "Arimidex", "dose": "0.25", "unit": "mg", "form": "oral"}], "weeks": 16, "startDate": "2026-06-18", "freqDays": [0, 3], "injections": [{"id": "inj0", "date": "2026-06-18", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj1", "date": "2026-06-22", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj2", "date": "2026-06-25", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj3", "date": "2026-06-29", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj4", "date": "2026-07-02", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj5", "date": "2026-07-06", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj6", "date": "2026-07-09", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj7", "date": "2026-07-13", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj8", "date": "2026-07-16", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj9", "date": "2026-07-20", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj10", "date": "2026-07-23", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj11", "date": "2026-07-27", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj12", "date": "2026-07-30", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj13", "date": "2026-08-03", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj14", "date": "2026-08-06", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj15", "date": "2026-08-10", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj16", "date": "2026-08-13", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj17", "date": "2026-08-17", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj18", "date": "2026-08-20", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj19", "date": "2026-08-24", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj20", "date": "2026-08-27", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj21", "date": "2026-08-31", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj22", "date": "2026-09-03", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj23", "date": "2026-09-07", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj24", "date": "2026-09-10", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj25", "date": "2026-09-14", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj26", "date": "2026-09-17", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj27", "date": "2026-09-21", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj28", "date": "2026-09-24", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj29", "date": "2026-09-28", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj30", "date": "2026-10-01", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj31", "date": "2026-10-05", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}, {"id": "inj32", "date": "2026-10-08", "done": false, "products": [{"name": "Testostérone E", "dose": "250", "unit": "mg"}, {"name": "Boldenone", "dose": "200", "unit": "mg"}, {"name": "Masteron", "dose": "200", "unit": "mg"}]}]};
-var ENH_GH={"id": "enh_gh", "products": [{"name": "GH", "dose": "5", "unit": "UI", "form": "injection"}], "weeks": 26, "startDate": "2026-06-05", "freqDays": [0, 1, 2, 3, 4, 5, 6], "injections": [{"id": "gh0", "date": "2026-06-05", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh1", "date": "2026-06-06", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh2", "date": "2026-06-07", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh3", "date": "2026-06-08", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh4", "date": "2026-06-09", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh5", "date": "2026-06-10", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh6", "date": "2026-06-11", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh7", "date": "2026-06-12", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh8", "date": "2026-06-13", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh9", "date": "2026-06-14", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh10", "date": "2026-06-15", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh11", "date": "2026-06-16", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh12", "date": "2026-06-17", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh13", "date": "2026-06-18", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh14", "date": "2026-06-19", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh15", "date": "2026-06-20", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh16", "date": "2026-06-21", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh17", "date": "2026-06-22", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh18", "date": "2026-06-23", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh19", "date": "2026-06-24", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh20", "date": "2026-06-25", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh21", "date": "2026-06-26", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh22", "date": "2026-06-27", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh23", "date": "2026-06-28", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh24", "date": "2026-06-29", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh25", "date": "2026-06-30", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh26", "date": "2026-07-01", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh27", "date": "2026-07-02", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh28", "date": "2026-07-03", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh29", "date": "2026-07-04", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh30", "date": "2026-07-05", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh31", "date": "2026-07-06", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh32", "date": "2026-07-07", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh33", "date": "2026-07-08", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh34", "date": "2026-07-09", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh35", "date": "2026-07-10", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh36", "date": "2026-07-11", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh37", "date": "2026-07-12", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh38", "date": "2026-07-13", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh39", "date": "2026-07-14", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh40", "date": "2026-07-15", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh41", "date": "2026-07-16", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh42", "date": "2026-07-17", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh43", "date": "2026-07-18", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh44", "date": "2026-07-19", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh45", "date": "2026-07-20", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh46", "date": "2026-07-21", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh47", "date": "2026-07-22", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh48", "date": "2026-07-23", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh49", "date": "2026-07-24", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh50", "date": "2026-07-25", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh51", "date": "2026-07-26", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh52", "date": "2026-07-27", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh53", "date": "2026-07-28", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh54", "date": "2026-07-29", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh55", "date": "2026-07-30", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh56", "date": "2026-07-31", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh57", "date": "2026-08-01", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh58", "date": "2026-08-02", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh59", "date": "2026-08-03", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh60", "date": "2026-08-04", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh61", "date": "2026-08-05", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh62", "date": "2026-08-06", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh63", "date": "2026-08-07", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh64", "date": "2026-08-08", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh65", "date": "2026-08-09", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh66", "date": "2026-08-10", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh67", "date": "2026-08-11", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh68", "date": "2026-08-12", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh69", "date": "2026-08-13", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh70", "date": "2026-08-14", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh71", "date": "2026-08-15", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh72", "date": "2026-08-16", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh73", "date": "2026-08-17", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh74", "date": "2026-08-18", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh75", "date": "2026-08-19", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh76", "date": "2026-08-20", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh77", "date": "2026-08-21", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh78", "date": "2026-08-22", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh79", "date": "2026-08-23", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh80", "date": "2026-08-24", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh81", "date": "2026-08-25", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh82", "date": "2026-08-26", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh83", "date": "2026-08-27", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh84", "date": "2026-08-28", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh85", "date": "2026-08-29", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh86", "date": "2026-08-30", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh87", "date": "2026-08-31", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh88", "date": "2026-09-01", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh89", "date": "2026-09-02", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh90", "date": "2026-09-03", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh91", "date": "2026-09-04", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh92", "date": "2026-09-05", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh93", "date": "2026-09-06", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh94", "date": "2026-09-07", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh95", "date": "2026-09-08", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh96", "date": "2026-09-09", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh97", "date": "2026-09-10", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh98", "date": "2026-09-11", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh99", "date": "2026-09-12", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh100", "date": "2026-09-13", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh101", "date": "2026-09-14", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh102", "date": "2026-09-15", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh103", "date": "2026-09-16", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh104", "date": "2026-09-17", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh105", "date": "2026-09-18", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh106", "date": "2026-09-19", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh107", "date": "2026-09-20", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh108", "date": "2026-09-21", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh109", "date": "2026-09-22", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh110", "date": "2026-09-23", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh111", "date": "2026-09-24", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh112", "date": "2026-09-25", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh113", "date": "2026-09-26", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh114", "date": "2026-09-27", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh115", "date": "2026-09-28", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh116", "date": "2026-09-29", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh117", "date": "2026-09-30", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh118", "date": "2026-10-01", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh119", "date": "2026-10-02", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh120", "date": "2026-10-03", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh121", "date": "2026-10-04", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh122", "date": "2026-10-05", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh123", "date": "2026-10-06", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh124", "date": "2026-10-07", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh125", "date": "2026-10-08", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh126", "date": "2026-10-09", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh127", "date": "2026-10-10", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh128", "date": "2026-10-11", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh129", "date": "2026-10-12", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh130", "date": "2026-10-13", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh131", "date": "2026-10-14", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh132", "date": "2026-10-15", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh133", "date": "2026-10-16", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh134", "date": "2026-10-17", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh135", "date": "2026-10-18", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh136", "date": "2026-10-19", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh137", "date": "2026-10-20", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh138", "date": "2026-10-21", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh139", "date": "2026-10-22", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh140", "date": "2026-10-23", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh141", "date": "2026-10-24", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh142", "date": "2026-10-25", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh143", "date": "2026-10-26", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh144", "date": "2026-10-27", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh145", "date": "2026-10-28", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh146", "date": "2026-10-29", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh147", "date": "2026-10-30", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh148", "date": "2026-10-31", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh149", "date": "2026-11-01", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh150", "date": "2026-11-02", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh151", "date": "2026-11-03", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh152", "date": "2026-11-04", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh153", "date": "2026-11-05", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh154", "date": "2026-11-06", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh155", "date": "2026-11-07", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh156", "date": "2026-11-08", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh157", "date": "2026-11-09", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh158", "date": "2026-11-10", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh159", "date": "2026-11-11", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh160", "date": "2026-11-12", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh161", "date": "2026-11-13", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh162", "date": "2026-11-14", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh163", "date": "2026-11-15", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh164", "date": "2026-11-16", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh165", "date": "2026-11-17", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh166", "date": "2026-11-18", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh167", "date": "2026-11-19", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh168", "date": "2026-11-20", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh169", "date": "2026-11-21", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh170", "date": "2026-11-22", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh171", "date": "2026-11-23", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh172", "date": "2026-11-24", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh173", "date": "2026-11-25", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh174", "date": "2026-11-26", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh175", "date": "2026-11-27", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh176", "date": "2026-11-28", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh177", "date": "2026-11-29", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh178", "date": "2026-11-30", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh179", "date": "2026-12-01", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh180", "date": "2026-12-02", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}, {"id": "gh181", "date": "2026-12-03", "done": false, "products": [{"name": "GH", "dose": "5", "unit": "UI"}]}]};
-
-// ═══════════════════════════════════════════════════════
-// WEIGHT / REPS ARRAYS
-// ═══════════════════════════════════════════════════════
 var WTS=[];for(var _w=0;_w<=300;_w+=1.25)WTS.push(Math.round(_w*100)/100);
 var RPS=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
 var DAYS=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+var LS='il-v2';
 
-// ═══════════════════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════════════════
-var LS='il-v1';
+// ═══ STATE ══════════════════════════════════════════════════════
 var S={
   view:'log',step:'muscle',
   selM:null,selE:null,selV:null,
-  // Current session being filled
-  sess:{date:'',muscle:'',exercise:'',sets:[],editIdx:-1,sessionId:''},
+  sess:{sessionId:'',date:'',muscle:'',exercise:'',sets:[],editIdx:-1},
   curReps:8,curWeight:60,
   restSecs:0,restDur:90,
-  // Saved data
   sessions:[],prs:{},
-  pending:[],lastSync:null,
-  // Cycles
   tCycles:[],activeCycle:null,cycleView:'home',
-  activeSes:null,
-  _newCyc:null,_pMuscle:null,_pExo:null,_pSesIdx:null,
-  _statsExo:null,
-  // Enhancement
+  activeSes:null,_newCyc:null,_pMuscle:null,_pExo:null,_pSesIdx:null,_statsExo:null,
   pinSet:null,unlocked:false,
   eCycles:[],activeEnh:null,enhView:'home',_newEnh:null,
 };
 var restIv=null;
 
-// ═══════════════════════════════════════════════════════
-// PERSISTENCE
-// ═══════════════════════════════════════════════════════
-function load(){
+function loadLocal(){
   try{
     var d=JSON.parse(localStorage.getItem(LS)||'{}');
     if(d.sessions)S.sessions=d.sessions;
     if(d.prs)S.prs=d.prs;
-    if(d.pending)S.pending=d.pending;
-    if(d.lastSync)S.lastSync=d.lastSync;
     if(d.tCycles)S.tCycles=d.tCycles;
     if(d.activeCycle!==undefined)S.activeCycle=d.activeCycle;
     if(d.pinSet)S.pinSet=d.pinSet;
     if(d.eCycles)S.eCycles=d.eCycles;
     if(d.activeEnh!==undefined)S.activeEnh=d.activeEnh;
-    // Restore in-progress session
-    if(d.sess&&d.sess.exercise&&d.sess.sets&&d.sess.sets.length){
-      S.sess=d.sess;
-      S.curReps=d.curReps||8;
-      S.curWeight=d.curWeight||60;
-      S.selM=d.selM;S.selE=d.selE;S.selV=d.selV;
-      if(S.sess.exercise)S.step='logging';
-    }
   }catch(e){}
 }
-function save(){
-  try{
-    localStorage.setItem(LS,JSON.stringify({
-      sessions:S.sessions,prs:S.prs,pending:S.pending,lastSync:S.lastSync,
-      tCycles:S.tCycles,activeCycle:S.activeCycle,
-      pinSet:S.pinSet,eCycles:S.eCycles,activeEnh:S.activeEnh,
-      // Always persist current session
-      sess:S.sess,curReps:S.curReps,curWeight:S.curWeight,
-      selM:S.selM,selE:S.selE,selV:S.selV,
-    }));
-  }catch(e){}
+function saveLocal(){
+  try{localStorage.setItem(LS,JSON.stringify({sessions:S.sessions,prs:S.prs,tCycles:S.tCycles,activeCycle:S.activeCycle,pinSet:S.pinSet,eCycles:S.eCycles,activeEnh:S.activeEnh}));}catch(e){}
 }
-load();
+loadLocal();
+if(!S.tCycles.length){S.tCycles=[PRELOADED_CYCLE];S.activeCycle=PRELOADED_CYCLE.id;saveLocal();}
+if(!S.eCycles.length){S.eCycles=[ENH_MAIN,ENH_GH];S.activeEnh=ENH_MAIN.id;saveLocal();}
 
-// Init preloaded data
-if(!S.tCycles.length){S.tCycles=[PRELOADED_CYCLE];S.activeCycle=PRELOADED_CYCLE.id;save();}
-if(!S.eCycles.length){S.eCycles=[ENH_MAIN,ENH_GH];S.activeEnh=ENH_MAIN.id;save();}
-
-// ═══════════════════════════════════════════════════════
-// SYNC
-// ═══════════════════════════════════════════════════════
-function banner(msg,type){
-  var b=document.getElementById('banner');
-  if(!b)return;
-  b.textContent=msg;b.className=type;
-  if(type==='ok'||type==='err')setTimeout(function(){if(b)b.className='';},4000);
-}
-// ── SHEETS API ─────────────────────────────────────
-async function sheetsPost(body){
-  if(!SHEET_URL||SHEET_URL==='skip')return null;
-  try{
-    var r=await fetch(SHEET_URL,{
-      method:'POST',
-      headers:{'Content-Type':'text/plain'},
-      body:JSON.stringify(body)
-    });
-    return await r.json();
-  }catch(e){return null;}
-}
-
-// Sauvegarde un set immédiatement dans Sheets
-async function saveSetToSheets(setData){
-  var res=await sheetsPost({action:'saveSet',set:setData});
-  if(res&&res.ok){banner('✓ Set '+setData.setNumber+' sauvegardé','ok');}
-  else{banner('📵 Hors ligne — set en local','err');}
-}
-
-// Récupère la séance en cours depuis Sheets
-async function loadEnCours(){
-  if(!SHEET_URL||SHEET_URL==='skip')return null;
-  try{
-    var r=await fetch(SHEET_URL+'?action=getEnCours');
-    var d=await r.json();
-    if(d.ok&&d.sets&&d.sets.length)return d;
-  }catch(e){}
-  return null;
-}
-
-// Finalise la séance dans Sheets
-async function finalizeSession(session){
-  var res=await sheetsPost({action:'saveSession',session:session});
-  if(res&&res.ok){
-    S.lastSync=new Date().toISOString();save();
-    banner('✓ Séance enregistrée !','ok');
-  }
-}
-
-// Sync manuelle
-async function sync(sessions,prs){
-  if(!SHEET_URL||SHEET_URL==='skip')return;
-  banner('⏳ Sync...','s');
-  var res=await sheetsPost({action:'syncAll',sessions:sessions,prs:prs});
-  if(res&&res.ok){S.pending=[];S.lastSync=new Date().toISOString();save();banner('✓ Synced — '+res.added+' ajoutées','ok');}
-  else banner('📵 Hors ligne','err');
-}
-
-// Au démarrage — check si séance en cours dans Sheets
-(async function(){
-  if(SHEET_URL&&SHEET_URL!=='skip'){
-    var enCours=await loadEnCours();
-    if(enCours&&enCours.sets.length&&!S.sess.sets.length){
-      // Propose de reprendre
-      S.sess.sets=enCours.sets.map(function(s){return {reps:s.reps,weight:s.weight};});
-      S.sess.exercise=enCours.session.exercise;
-      S.sess.muscle=enCours.session.muscle;
-      S.sess.date=enCours.session.date;
-      S.sess.sessionId=enCours.session.sessionId;
-      // Find selM and selE from exercise name
-      var parts=S.sess.exercise.split(' — ');
-      if(parts.length>=2){
-        MUSCLES.forEach(function(m){
-          EXO[m.id].forEach(function(ex){
-            if(ex.n===parts[0]){S.selM=m;S.selE=ex;S.selV=parts[1];}
-          });
-        });
-      }
-      if(S.sess.sets.length){S.step='logging';save();render();}
-    }
-    if(S.pending.length)sync(S.pending,S.prs);
-  }
-})();
-
-// ═══════════════════════════════════════════════════════
-// HELPERS
-// ═══════════════════════════════════════════════════════
+// ═══ HELPERS ════════════════════════════════════════════════════
 function e(tag,attrs){var el=document.createElement(tag);if(attrs)Object.entries(attrs).forEach(function(kv){el.setAttribute(kv[0],kv[1]);});return el;}
 function t(tag,txt,attrs){var el=e(tag,attrs);el.textContent=txt;return el;}
 function today(){return new Date().toISOString().split('T')[0];}
 function fmtD(d){return new Date(d+'T12:00:00').toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'2-digit'});}
 function est1RM(w,r){return r===1?w:Math.round(w*(1+r/30));}
+function uid(){return 'sess-'+Date.now()+'-'+Math.random().toString(36).slice(2,7);}
 
-// ═══════════════════════════════════════════════════════
-// PICKER
-// ═══════════════════════════════════════════════════════
+function banner(msg,type){
+  var b=document.getElementById('banner');
+  if(!b)return;
+  b.textContent=msg;b.className=type;
+  if(type==='ok'||type==='err')setTimeout(function(){if(b)b.className='';},3000);
+}
+function loader(show){
+  var l=document.getElementById('loader');
+  if(l)l.className=show?'show':'';
+}
+
+// ═══ SUPABASE REAL-TIME SAVE ════════════════════════════════════
+async function saveSetNow(setData){
+  try{
+    await sbPost('encours',{
+      session_id:setData.sessionId,
+      date:setData.date,
+      muscle:setData.muscle,
+      exercise:setData.exercise,
+      set_number:setData.setNumber,
+      reps:setData.reps,
+      weight:setData.weight
+    });
+    banner('✓ Set '+setData.setNumber+' sauvegardé','ok');
+  }catch(ex){
+    banner('📵 Hors ligne — set local','err');
+  }
+}
+
+async function loadEnCours(){
+  try{
+    loader(true);
+    var rows=await sbGet('encours','select=*&order=set_number.asc');
+    loader(false);
+    if(!rows||!rows.length)return null;
+    var last=rows[rows.length-1];
+    return {
+      sessionId:last.session_id,
+      date:last.date,
+      muscle:last.muscle,
+      exercise:last.exercise,
+      sets:rows.map(function(r){return {reps:r.reps,weight:r.weight};})
+    };
+  }catch(ex){loader(false);return null;}
+}
+
+async function clearEnCours(){
+  try{await sbDelete('encours','id=gte.0');}catch(ex){}
+}
+
+async function finalizeSession(session){
+  try{
+    await sbUpsert('sessions',{
+      id:session.id,
+      date:session.date,
+      muscle:session.muscle,
+      exercise:session.exercise,
+      sets:session.sets,
+      estimated_1rm:session.estimated1RM,
+      total_volume:session.totalVolume
+    });
+    await sbUpsert('prs',{
+      exercise:session.exercise,
+      estimated_1rm:session.estimated1RM,
+      updated_at:new Date().toISOString()
+    });
+    await clearEnCours();
+    banner('✓ Séance enregistrée !','ok');
+  }catch(ex){
+    banner('⚠️ Erreur sauvegarde','err');
+  }
+}
+
+async function loadSessions(){
+  try{
+    var rows=await sbGet('sessions','select=*&order=created_at.desc&limit=200');
+    if(rows&&rows.length){
+      S.sessions=rows.map(function(r){
+        return {
+          id:r.id,date:r.date,muscle:r.muscle,exercise:r.exercise,
+          sets:r.sets,estimated1RM:r.estimated_1rm,totalVolume:r.total_volume
+        };
+      });
+    }
+    var prs=await sbGet('prs','select=*');
+    if(prs&&prs.length){
+      S.prs={};
+      prs.forEach(function(p){S.prs[p.exercise]=p.estimated_1rm;});
+    }
+    saveLocal();
+  }catch(ex){}
+}
+
+async function markInjSupabase(injId,done){
+  try{
+    await sbPatch('injections','id=eq.'+injId,{done:done,done_at:new Date().toISOString()});
+  }catch(ex){}
+}
+
+// ═══ INIT ════════════════════════════════════════════════════════
+(async function init(){
+  loader(true);
+  // Load sessions from Supabase
+  await loadSessions();
+  // Check for in-progress session
+  var ec=await loadEnCours();
+  if(ec&&ec.sets&&ec.sets.length){
+    S.sess.sessionId=ec.sessionId;
+    S.sess.date=ec.date;
+    S.sess.muscle=ec.muscle;
+    S.sess.exercise=ec.exercise;
+    S.sess.sets=ec.sets;
+    S.curWeight=ec.sets[ec.sets.length-1].weight;
+    S.curReps=ec.sets[ec.sets.length-1].reps;
+    // Restore selM / selE / selV
+    var parts=ec.exercise.split(' — ');
+    if(parts.length>=2){
+      MUSCLES.forEach(function(m){
+        EXO[m.id].forEach(function(ex){
+          if(ex.n===parts[0]){S.selM=m;S.selE=ex;S.selV=parts[1];}
+        });
+      });
+    }
+    S.step='logging';
+  }
+  loader(false);
+  render();
+})();
+
+// ═══ PICKER ═════════════════════════════════════════════════════
 function mkPicker(items,cur,onChange,fmt){
   var wrap=e('div',{class:'pwrap'});
   var picker=e('div',{class:'picker'});
   var PAD=3;
   for(var i=0;i<PAD;i++)picker.appendChild(e('div',{class:'pitem'}));
-  items.forEach(function(v){
-    var item=e('div',{class:'pitem'});
-    item.textContent=fmt?fmt(v):String(v);
-    picker.appendChild(item);
-  });
+  items.forEach(function(v){var item=e('div',{class:'pitem'});item.textContent=fmt?fmt(v):String(v);picker.appendChild(item);});
   for(var i=0;i<PAD;i++)picker.appendChild(e('div',{class:'pitem'}));
-  wrap.appendChild(e('div',{class:'pline'}));
-  wrap.appendChild(picker);
-  wrap.appendChild(e('div',{class:'pgt'}));
-  wrap.appendChild(e('div',{class:'pgb'}));
+  wrap.appendChild(e('div',{class:'pline'}));wrap.appendChild(picker);
+  wrap.appendChild(e('div',{class:'pgt'}));wrap.appendChild(e('div',{class:'pgb'}));
   var idx=items.findIndex(function(v){return Math.abs(v-cur)<0.01;});
-  if(idx<0)idx=0;
-  setTimeout(function(){picker.scrollTop=idx*44;upd();},0);
+  setTimeout(function(){picker.scrollTop=(idx>=0?idx:0)*44;upd();},0);
   function upd(){
     var si=Math.round(picker.scrollTop/44);
     picker.querySelectorAll('.pitem').forEach(function(item,i){
@@ -489,9 +499,7 @@ function mkPicker(items,cur,onChange,fmt){
   return wrap;
 }
 
-// ═══════════════════════════════════════════════════════
-// RENDER ENGINE
-// ═══════════════════════════════════════════════════════
+// ═══ RENDER ENGINE ══════════════════════════════════════════════
 var app=document.getElementById('app');
 function render(){
   app.innerHTML='';
@@ -506,7 +514,7 @@ function render(){
   app.appendChild(wrap);
 }
 
-// ─── LOG ─────────────────────────────────────────────
+// ─── LOG ──────────────────────────────────────────────────────
 function renderLog(wrap){
   if(S.step==='muscle')renderMuscle(wrap);
   else if(S.step==='exo')renderExo(wrap);
@@ -518,13 +526,11 @@ function renderMuscle(wrap){
   var sc=e('div',{class:'scroll pt'});
   sc.appendChild(t('div','IRON LOG',{style:'font-size:10px;color:#444;letter-spacing:5px;margin-bottom:4px;'}));
   sc.appendChild(t('h2','Muscle ?'));
-  // Restore banner
   if(S.sess.sets&&S.sess.sets.length&&S.sess.exercise){
     var rb=e('div',{style:'background:#1a0a00;border:1px solid var(--acc);border-radius:10px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;'});
     rb.innerHTML='<div><div style="font-size:10px;color:var(--acc);letter-spacing:2px;">SÉANCE EN COURS</div><div style="font-size:13px;font-weight:700;">'+S.sess.exercise+' · '+S.sess.sets.length+' set'+(S.sess.sets.length>1?'s':'')+'</div></div>';
     var resumeBtn=e('button',{style:'background:var(--acc);border:none;color:#fff;border-radius:8px;padding:6px 12px;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;'});
-    resumeBtn.textContent='REPRENDRE ›';
-    resumeBtn.onclick=function(){S.step='logging';render();};
+    resumeBtn.textContent='REPRENDRE ›';resumeBtn.onclick=function(){S.step='logging';render();};
     rb.appendChild(resumeBtn);sc.appendChild(rb);
   }
   var atc=S.tCycles.find(function(c){return c.id===S.activeCycle;});
@@ -572,13 +578,12 @@ function renderVariant(wrap){
     b.onclick=function(){
       S.selV=v;
       var exName=S.selE.n+' — '+v;
-      // Start new session (clear previous if different exercise)
       if(S.sess.exercise!==exName){
-        var lastW=(last&&last.sets.length)?last.sets[last.sets.length-1].weight:60;
-        S.sess={date:today(),muscle:S.selM.label,exercise:exName,sets:[],editIdx:-1,sessionId:'sess-'+Date.now()};
+        var lastW=(last&&last.sets&&last.sets.length)?last.sets[last.sets.length-1].weight:S.selE.v.indexOf(v)===0?60:60;
+        S.sess={sessionId:uid(),date:today(),muscle:S.selM.label,exercise:exName,sets:[],editIdx:-1};
         S.curWeight=lastW;S.curReps=8;
       }
-      S.step='logging';save();render();
+      S.step='logging';render();
     };
     sc.appendChild(b);
   });
@@ -586,14 +591,14 @@ function renderVariant(wrap){
 }
 
 function renderLogging(wrap){
-  // ── HEADER ──
+  var isEditing=S.sess.editIdx>=0;
   var hdr=e('div',{class:'lhdr'});
-  // Date row - editable
+  // Date
   var dr=e('div',{style:'display:flex;align-items:center;gap:8px;margin-bottom:8px;'});
   dr.appendChild(t('span','📅',{style:'font-size:13px;'}));
   var di=e('input',{type:'date',style:'background:transparent;border:none;color:var(--acc);font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;flex:1;'});
   di.value=S.sess.date||today();
-  di.onchange=function(ev){S.sess.date=ev.target.value;save();};
+  di.onchange=function(ev){S.sess.date=ev.target.value;};
   dr.appendChild(di);hdr.appendChild(dr);
   // Title + finish
   var tr=e('div',{style:'display:flex;justify-content:space-between;align-items:flex-start;'});
@@ -602,79 +607,74 @@ function renderLogging(wrap){
   var fin=e('button',{class:'finbtn'+(S.sess.sets.length?' has':'')});
   fin.textContent='FINIR ✓';fin.onclick=finishSession;
   tr.appendChild(info);tr.appendChild(fin);hdr.appendChild(tr);
-  wrap.appendChild(hdr);
-
-  var sc=e('div',{class:'scroll',style:'padding-top:14px;display:flex;flex-direction:column;gap:12px;'});
-
-  // ── SETS LIST (all editable) ──
+  // Sets list
   if(S.sess.sets.length){
-    var setsList=e('div');
+    var sl=e('div',{style:'margin-top:10px;'});
     S.sess.sets.forEach(function(s,i){
       var isEdit=S.sess.editIdx===i;
       var row=e('div',{class:'set-row'+(isEdit?' editing':' saved')});
-      // Set number
       row.appendChild(t('div','S'+(i+1),{style:'font-size:11px;color:var(--t3);font-weight:700;width:24px;flex-shrink:0;'}));
-      // Values
       var vals=e('div',{style:'flex:1;'});
       vals.innerHTML='<span style="font-size:17px;font-weight:800;color:'+(isEdit?'var(--blue)':'var(--t1)')+';">'+s.reps+' reps</span><span style="font-size:13px;color:var(--t3);margin:0 8px;">×</span><span style="font-size:17px;font-weight:800;color:'+(isEdit?'var(--blue)':'var(--acc)')+';">'+s.weight+'kg</span>';
       row.appendChild(vals);
-      // Edit / confirm button
       if(isEdit){
         var conf=e('button',{style:'background:var(--blue);border:none;color:#fff;border-radius:8px;padding:6px 12px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;'});
-        conf.textContent='OK ✓';conf.onclick=function(){
-          S.sess.sets[i]={reps:S.curReps,weight:S.curWeight};
-          S.sess.editIdx=-1;save();render();
-        };
+        conf.textContent='OK ✓';conf.onclick=function(){S.sess.sets[i]={reps:S.curReps,weight:S.curWeight};S.sess.editIdx=-1;render();};
         row.appendChild(conf);
-      } else {
-        var editB=e('button',{style:'background:none;border:1px solid var(--border);color:var(--t3);border-radius:8px;padding:6px 10px;font-family:inherit;font-size:12px;cursor:pointer;'});
-        editB.textContent='✏️';
+      }else{
+        var eb=e('button',{style:'background:none;border:1px solid var(--border);color:var(--t3);border-radius:8px;padding:6px 10px;font-family:inherit;font-size:12px;cursor:pointer;'});
+        eb.textContent='✏️';
         var ci=i;
-        editB.onclick=function(){S.sess.editIdx=ci;S.curReps=S.sess.sets[ci].reps;S.curWeight=S.sess.sets[ci].weight;render();};
-        row.appendChild(editB);
+        eb.onclick=function(){S.sess.editIdx=ci;S.curReps=S.sess.sets[ci].reps;S.curWeight=S.sess.sets[ci].weight;render();};
+        row.appendChild(eb);
       }
-      // Delete button
       var del=e('button',{style:'background:none;border:none;color:var(--red);font-size:16px;cursor:pointer;padding:0 4px;margin-left:4px;'});
       del.textContent='×';
       var di2=i;
-      del.onclick=function(){S.sess.sets.splice(di2,1);if(S.sess.editIdx===di2)S.sess.editIdx=-1;save();render();};
+      del.onclick=function(){S.sess.sets.splice(di2,1);if(S.sess.editIdx===di2)S.sess.editIdx=-1;render();};
       row.appendChild(del);
-      setsList.appendChild(row);
+      sl.appendChild(row);
     });
-    sc.appendChild(setsList);
+    hdr.appendChild(sl);
   }
-
-  // ── PICKERS ──
-  var isEditing=S.sess.editIdx>=0;
+  // Rest timer
+  if(S.restSecs>0&&!isEditing){
+    var rb=e('div',{style:'display:flex;align-items:center;gap:10px;margin-top:10px;'});
+    var tr2=e('div',{style:'flex:1;height:3px;background:#1a1a2a;border-radius:2px;'});
+    var fi=e('div',{id:'rf',style:'height:100%;background:var(--acc);border-radius:2px;width:'+Math.round((S.restSecs/S.restDur)*100)+'%;transition:width 1s linear;'});
+    tr2.appendChild(fi);rb.appendChild(tr2);
+    rb.appendChild(t('div',S.restSecs+'s',{id:'rt',style:'font-size:13px;color:var(--acc);font-weight:700;min-width:32px;'}));
+    var rx=e('button',{style:'background:none;border:none;color:var(--t3);font-size:18px;cursor:pointer;'});rx.textContent='×';rx.onclick=function(){clearInterval(restIv);S.restSecs=0;render();};rb.appendChild(rx);
+    hdr.appendChild(rb);
+  }
+  wrap.appendChild(hdr);
+  var sc=e('div',{class:'scroll',style:'padding-top:14px;display:flex;flex-direction:column;gap:12px;'});
   if(isEditing){
-    sc.appendChild(t('div','✏️ MODIFICATION SET '+(S.sess.editIdx+1),{style:'font-size:11px;color:var(--blue);font-weight:700;letter-spacing:2px;text-align:center;'}));
+    var eb2=e('div',{style:'background:#0a0f2a;border:1px solid var(--blue);border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;'});
+    eb2.appendChild(t('div','✏️ MODIFICATION SET '+(S.sess.editIdx+1),{style:'font-size:12px;color:var(--blue);font-weight:700;'}));
+    var cb=e('button',{style:'background:none;border:1px solid var(--border);color:var(--t3);border-radius:8px;padding:5px 10px;font-family:inherit;font-size:11px;cursor:pointer;'});
+    cb.textContent='Annuler';cb.onclick=function(){S.sess.editIdx=-1;render();};eb2.appendChild(cb);sc.appendChild(eb2);
   }
+  // Pickers
   var pz=e('div',{class:'pzone'});
   var rc=e('div',{class:'pcol'});rc.appendChild(t('div','REPS',{class:'plbl'}));
-  rc.appendChild(mkPicker(RPS,S.curReps,function(v){S.curReps=v;save();},function(v){return String(v);}));
-  pz.appendChild(rc);
+  rc.appendChild(mkPicker(RPS,S.curReps,function(v){S.curReps=v;},function(v){return String(v);}));pz.appendChild(rc);
   pz.appendChild(t('div','×',{class:'psep'}));
   var wc=e('div',{class:'pcol',style:'flex:1.6;'});wc.appendChild(t('div','CHARGE (kg)',{class:'plbl'}));
-  wc.appendChild(mkPicker(WTS,S.curWeight,function(v){S.curWeight=v;save();},function(v){return Number.isInteger(v)?String(v):v.toFixed(2).replace(/\.?0+$/,'');}));
-  pz.appendChild(wc);
+  wc.appendChild(mkPicker(WTS,S.curWeight,function(v){S.curWeight=v;},function(v){return Number.isInteger(v)?String(v):v.toFixed(2).replace(/\.?0+$/,'');}));pz.appendChild(wc);
   sc.appendChild(pz);
-
-  // ── SAVE BUTTON ──
+  // Save button
   var sv=e('button',{class:'sbtn rdy'});
-  if(isEditing)sv.textContent='MODIFIER SET '+(S.sess.editIdx+1);
-  else sv.textContent=S.sess.sets.length===0?'VALIDER SET 1':'+ SET '+(S.sess.sets.length+1);
+  sv.textContent=isEditing?'MODIFIER SET '+(S.sess.editIdx+1):(S.sess.sets.length===0?'VALIDER SET 1':'+ SET '+(S.sess.sets.length+1));
   sv.onclick=function(){
     if(!S.curReps||!S.curWeight)return;
     if(isEditing){
       S.sess.sets[S.sess.editIdx]={reps:S.curReps,weight:S.curWeight};
-      S.sess.editIdx=-1;
-      save();render();
-    } else {
-      var newSet={reps:S.curReps,weight:S.curWeight};
-      S.sess.sets.push(newSet);
-      save();
-      // Save to Sheets immediately
-      saveSetToSheets({
+      S.sess.editIdx=-1;render();
+    }else{
+      S.sess.sets.push({reps:S.curReps,weight:S.curWeight});
+      // Save to Supabase immediately
+      saveSetNow({
         sessionId:S.sess.sessionId,
         date:S.sess.date||today(),
         muscle:S.sess.muscle,
@@ -683,37 +683,17 @@ function renderLogging(wrap){
         reps:S.curReps,
         weight:S.curWeight
       });
-      startRest(S.sess._restDur||90);
-      render();
+      startRest(90);render();
     }
   };
   sc.appendChild(sv);
-
-  // ── REST BUTTONS ──
+  // Rest buttons
   var rbs=e('div',{style:'display:flex;gap:6px;'});
-  [60,90,120,180].forEach(function(s){
-    var b=e('button',{class:'rbtn'});b.textContent='⏱ '+s+'s';b.onclick=function(){startRest(s);};rbs.appendChild(b);
-  });
-  sc.appendChild(rbs);
-
-  // ── REST TIMER ──
-  if(S.restSecs>0){
-    var rt=e('div',{style:'background:#0a0f1a;border:1px solid var(--blue);border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:10px;'});
-    var track=e('div',{style:'flex:1;height:3px;background:#1a1a2a;border-radius:2px;'});
-    var fill=e('div',{id:'rf',style:'height:100%;background:var(--acc);border-radius:2px;width:'+Math.round((S.restSecs/S.restDur)*100)+'%;transition:width 1s linear;'});
-    track.appendChild(fill);
-    rt.appendChild(track);
-    rt.appendChild(t('div',S.restSecs+'s',{id:'rt',style:'font-size:13px;color:var(--acc);font-weight:700;min-width:32px;'}));
-    var rx=e('button',{style:'background:none;border:none;color:var(--t3);font-size:18px;cursor:pointer;'});
-    rx.textContent='×';rx.onclick=function(){clearInterval(restIv);S.restSecs=0;render();};
-    rt.appendChild(rx);
-    sc.appendChild(rt);
-  }
-
-  wrap.appendChild(sc);
+  [60,90,120,180].forEach(function(s){var b=e('button',{class:'rbtn'});b.textContent='⏱ '+s+'s';b.onclick=function(){startRest(s);};rbs.appendChild(b);});
+  sc.appendChild(rbs);wrap.appendChild(sc);
 }
 
-// ─── HISTORY ─────────────────────────────────────────
+// ─── HISTORY ──────────────────────────────────────────────────
 function renderHistory(wrap){
   var sc=e('div',{class:'scroll pt'});
   sc.appendChild(t('h2','Séances'));
@@ -721,18 +701,17 @@ function renderHistory(wrap){
   if(!S.sessions.length){sc.appendChild(t('div','Aucune séance encore 💪',{style:'text-align:center;color:#333;padding:60px 0;'}));return wrap.appendChild(sc);}
   S.sessions.forEach(function(s){
     var c=e('div',{class:'csm'});
-    var pend=S.pending.find(function(p){return p.id===s.id;});
-    c.innerHTML='<div style="display:flex;justify-content:space-between;margin-bottom:8px;"><div style="flex:1;margin-right:10px;"><div style="font-weight:700;font-size:14px;line-height:1.3;">'+s.exercise+'</div><div style="font-size:11px;color:var(--t3);margin-top:3px;">'+s.date+' · '+s.muscle+' '+(pend?'<span style="color:var(--acc);">⏳</span>':'<span style="color:var(--green);">✓</span>')+'</div></div><div style="text-align:right;flex-shrink:0;"><div style="color:var(--acc);font-weight:900;font-size:18px;">'+s.estimated1RM+'kg</div><div style="font-size:10px;color:var(--t3);">1RM est.</div></div></div><div style="display:flex;flex-wrap:wrap;gap:5px;">'+s.sets.map(function(x){return '<div style="background:#1a1a28;border-radius:7px;padding:4px 10px;font-size:12px;color:#888;">'+x.reps+'×'+x.weight+'kg</div>';}).join('')+'</div><div style="margin-top:8px;font-size:11px;color:var(--t3);">Vol. '+s.totalVolume.toLocaleString()+' kg</div>';
+    c.innerHTML='<div style="display:flex;justify-content:space-between;margin-bottom:8px;"><div style="flex:1;margin-right:10px;"><div style="font-weight:700;font-size:14px;line-height:1.3;">'+s.exercise+'</div><div style="font-size:11px;color:var(--t3);margin-top:3px;">'+s.date+' · '+s.muscle+'</div></div><div style="text-align:right;flex-shrink:0;"><div style="color:var(--acc);font-weight:900;font-size:18px;">'+s.estimated1RM+'kg</div><div style="font-size:10px;color:var(--t3);">1RM est.</div></div></div><div style="display:flex;flex-wrap:wrap;gap:5px;">'+s.sets.map(function(x){return '<div style="background:#1a1a28;border-radius:7px;padding:4px 10px;font-size:12px;color:#888;">'+x.reps+'×'+x.weight+'kg</div>';}).join('')+'</div><div style="margin-top:8px;font-size:11px;color:var(--t3);">Vol. '+s.totalVolume+' kg</div>';
     sc.appendChild(c);
   });
   wrap.appendChild(sc);
 }
 
-// ─── STATS ───────────────────────────────────────────
+// ─── STATS ────────────────────────────────────────────────────
 function renderStats(wrap){
   var sc=e('div',{class:'scroll pt'});
   sc.appendChild(t('h2','Stats'));
-  var vol=S.sessions.reduce(function(a,s){return a+s.totalVolume;},0);
+  var vol=S.sessions.reduce(function(a,s){return a+(s.totalVolume||0);},0);
   var grid=e('div',{class:'sgrid'});
   [{l:'Séances',v:S.sessions.length},{l:'Volume',v:(vol/1000).toFixed(1)+'t'},{l:'PRs',v:Object.keys(S.prs).length}].forEach(function(x){
     var b=e('div',{class:'sbox'});b.innerHTML='<div class="sv">'+x.v+'</div><div class="sl">'+x.l.toUpperCase()+'</div>';grid.appendChild(b);
@@ -746,23 +725,10 @@ function renderStats(wrap){
   });
   if(!Object.keys(S.prs).length)pc.appendChild(t('div','Aucun PR encore',{style:'color:var(--t3);text-align:center;padding:16px 0;'}));
   sc.appendChild(pc);
-  if(S.sessions.length>1){
-    var byD={};S.sessions.forEach(function(s){byD[s.date]=(byD[s.date]||0)+s.totalVolume;});
-    var data=Object.entries(byD).sort(function(a,b){return a[0].localeCompare(b[0]);}).slice(-10);
-    var mx=Math.max.apply(null,data.map(function(d){return d[1];}));
-    var cc=e('div',{class:'card'});cc.appendChild(t('div','VOLUME PAR SÉANCE',{class:'sec'}));
-    var chart=e('div',{class:'barchart'});
-    data.forEach(function(dv){
-      var w=e('div',{class:'bw'});
-      var bar=e('div',{class:'bar'});bar.style.height=Math.round((dv[1]/mx)*90)+'px';
-      w.appendChild(bar);w.appendChild(t('div',dv[0].slice(5),{class:'blbl'}));chart.appendChild(w);
-    });
-    cc.appendChild(chart);sc.appendChild(cc);
-  }
   wrap.appendChild(sc);
 }
 
-// ─── CYCLE ───────────────────────────────────────────
+// ─── CYCLE ────────────────────────────────────────────────────
 function renderCycle(wrap){
   if(S.cycleView==='home')rCycHome(wrap);
   else if(S.cycleView==='create')rCycCreate(wrap);
@@ -784,15 +750,15 @@ function rCycHome(wrap){
     var sb=e('button',{style:'flex:1;padding:12px;background:var(--blue);border:none;border-radius:10px;color:#fff;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;'});
     sb.textContent='FAIRE UNE SÉANCE ›';sb.onclick=function(){S.cycleView='active';render();};
     var eb=e('button',{style:'padding:12px 14px;background:#1a1a2a;border:1px solid var(--border);border-radius:10px;color:var(--t3);font-family:inherit;font-size:12px;cursor:pointer;'});
-    eb.textContent='Terminer';eb.onclick=function(){if(confirm('Terminer ce cycle ?')){S.activeCycle=null;save();render();}};
+    eb.textContent='Terminer';eb.onclick=function(){if(confirm('Terminer ce cycle ?')){S.activeCycle=null;saveLocal();render();}};
     btns.appendChild(sb);btns.appendChild(eb);card.appendChild(btns);sc.appendChild(card);
   }
-  var nb=e('button',{class:'btn btn-blue'});nb.textContent='+ NOUVEAU CYCLE';nb.onclick=function(){S._newCyc={name:'',sessions:[]};S.cycleView='create';render();};sc.appendChild(nb);
+  var nb=e('button',{class:'btn blue'});nb.textContent='+ NOUVEAU CYCLE';nb.onclick=function(){S._newCyc={name:'',sessions:[]};S.cycleView='create';render();};sc.appendChild(nb);
   S.tCycles.filter(function(c){return c.id!==S.activeCycle;}).forEach(function(c){
     var card=e('div',{class:'csm'});
     card.innerHTML='<div style="font-weight:700;font-size:15px;">'+c.name+'</div><div style="font-size:11px;color:var(--t3);margin-top:3px;">'+fmtD(c.startDate)+' · '+c.sessions.length+' séances</div>';
     var ab=e('button',{style:'padding:7px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--t2);font-family:inherit;font-size:11px;cursor:pointer;margin-top:8px;'});
-    ab.textContent='Activer';ab.onclick=function(){S.activeCycle=c.id;save();S.cycleView='active';render();};card.appendChild(ab);sc.appendChild(card);
+    ab.textContent='Activer';ab.onclick=function(){S.activeCycle=c.id;saveLocal();S.cycleView='active';render();};card.appendChild(ab);sc.appendChild(card);
   });
   wrap.appendChild(sc);
 }
@@ -831,11 +797,11 @@ function rCycCreate(wrap){
     aeb.textContent='+ Ajouter un exercice';aeb.onclick=function(){S._pSesIdx=si;S._pMuscle=null;S._pExo=null;S.cycleView='pickM';render();};
     sc2.appendChild(aeb);sc.appendChild(sc2);
   });
-  var sv=e('button',{class:'btn btn-blue',style:'margin-top:8px;'});sv.textContent='CRÉER LE CYCLE';
+  var sv=e('button',{class:'btn blue',style:'margin-top:8px;'});sv.textContent='CRÉER LE CYCLE';
   sv.onclick=function(){
     if(!nc.name||!nc.sessions.length){alert('Donne un nom et au moins une séance !');return;}
     var cyc={id:Date.now(),name:nc.name,startDate:today(),sessions:nc.sessions,log:[]};
-    S.tCycles.push(cyc);S.activeCycle=cyc.id;S._newCyc=null;save();S.cycleView='active';render();
+    S.tCycles.push(cyc);S.activeCycle=cyc.id;S._newCyc=null;saveLocal();S.cycleView='active';render();
   };
   sc.appendChild(sv);wrap.appendChild(sc);
 }
@@ -848,14 +814,14 @@ function rCycPick(wrap){
       var b=e('button',{class:'lbtn'});b.innerHTML='<div style="font-weight:600;font-size:15px;">'+m.emoji+' '+m.label+'</div><div style="color:var(--t3);font-size:12px;">'+EXO[m.id].length+' ›</div>';
       b.onclick=function(){S._pMuscle=m;S.cycleView='pickE';render();};sc.appendChild(b);
     });wrap.appendChild(sc);
-  } else if(S.cycleView==='pickE'){
+  }else if(S.cycleView==='pickE'){
     wrap.appendChild(mkHdr(S._pMuscle.label,'Exercice ?',function(){S.cycleView='pickM';render();}));
     var sc=e('div',{class:'scroll',style:'padding-top:12px;'});
     EXO[S._pMuscle.id].forEach(function(ex){
       var b=e('button',{class:'lbtn'});b.innerHTML='<div style="font-weight:600;font-size:15px;">'+ex.n+'</div><div style="color:var(--t3);font-size:12px;">'+ex.v.length+' ›</div>';
       b.onclick=function(){S._pExo=ex;S.cycleView='pickV';render();};sc.appendChild(b);
     });wrap.appendChild(sc);
-  } else {
+  }else{
     wrap.appendChild(mkHdr(S._pExo.n,'Variante ?',function(){S.cycleView='pickE';render();},true));
     var sc=e('div',{class:'scroll',style:'padding-top:12px;'});
     S._pExo.v.forEach(function(v){
@@ -903,13 +869,13 @@ function rCycSession(wrap){
   var ses=S.activeSes;
   if(!ses||ses.curExoIdx>=ses.exos.length){
     var cyc=S.tCycles.find(function(c){return c.id===S.activeCycle;});
-    if(cyc&&ses){if(!cyc.log)cyc.log=[];cyc.log.push({date:today(),sessionName:ses.name,sets:ses.logData||[]});save();}
+    if(cyc&&ses){if(!cyc.log)cyc.log=[];cyc.log.push({date:today(),sessionName:ses.name,sets:ses.logData||[]});saveLocal();}
     S.activeSes=null;S.cycleView='active';alert('Séance terminée ! 💪');render();return;
   }
   var exo=ses.exos[ses.curExoIdx];
-  var hdr=e('div',{class:'lhdr'});
   var isLastSet=ses.curSetIdx>=exo.sets-1;
   var isLastExo=ses.curExoIdx>=ses.exos.length-1;
+  var hdr=e('div',{class:'lhdr'});
   hdr.innerHTML='<div style="display:flex;justify-content:space-between;align-items:flex-start;"><div><div style="font-size:10px;color:var(--blue);letter-spacing:2px;">'+ses.name.toUpperCase()+' · EXO '+(ses.curExoIdx+1)+'/'+ses.exos.length+'</div><div style="font-size:15px;font-weight:800;">'+exo.name+'</div><div style="font-size:12px;color:var(--t3);margin-top:2px;">SET '+(ses.curSetIdx+1)+'/'+exo.sets+' · Cible '+exo.reps+' reps · '+exo.rest+'s repos</div></div></div>';
   var qb=e('button',{style:'background:#1a0a0a;border:1px solid #3a1a1a;color:var(--red);border-radius:10px;padding:8px 12px;font-family:inherit;font-size:11px;cursor:pointer;'});
   qb.textContent='Quitter';qb.onclick=function(){if(confirm('Quitter ?')){S.activeSes=null;S.cycleView='active';render();}};
@@ -921,8 +887,8 @@ function rCycSession(wrap){
     var rb=e('div',{style:'display:flex;align-items:center;gap:10px;margin-top:10px;'});
     var tr=e('div',{style:'flex:1;height:3px;background:#1a1a2a;border-radius:2px;'});
     var fi=e('div',{id:'rf',style:'height:100%;background:var(--acc);border-radius:2px;width:'+Math.round((S.restSecs/S.restDur)*100)+'%;transition:width 1s linear;'});
-    tr.appendChild(fi);
-    rb.appendChild(tr);rb.appendChild(t('div',S.restSecs+'s',{id:'rt',style:'font-size:13px;color:var(--acc);font-weight:700;min-width:32px;'}));
+    tr.appendChild(fi);rb.appendChild(tr);
+    rb.appendChild(t('div',S.restSecs+'s',{id:'rt',style:'font-size:13px;color:var(--acc);font-weight:700;min-width:32px;'}));
     var rx=e('button',{style:'background:none;border:none;color:var(--t3);font-size:18px;cursor:pointer;'});rx.textContent='×';rx.onclick=function(){clearInterval(restIv);S.restSecs=0;render();};rb.appendChild(rx);hdr.appendChild(rb);
   }
   wrap.appendChild(hdr);
@@ -938,8 +904,7 @@ function rCycSession(wrap){
   rc.appendChild(mkPicker(RPS,S.curReps,function(v){S.curReps=v;},function(v){return String(v);}));pz.appendChild(rc);
   pz.appendChild(t('div','×',{class:'psep'}));
   var wc=e('div',{class:'pcol',style:'flex:1.6;'});wc.appendChild(t('div','CHARGE (kg)',{class:'plbl'}));
-  var lastW=(lastSes&&lastSes.sets[ses.curSetIdx])?lastSes.sets[ses.curSetIdx].weight:(exo.dw||S.curWeight);
-  if(ses.logData&&ses.logData.length)lastW=S.curWeight;
+  var lastW=(lastSes&&lastSes.sets[ses.curSetIdx])?lastSes.sets[ses.curSetIdx].weight:(ses.logData&&ses.logData.length?S.curWeight:exo.dw||60);
   wc.appendChild(mkPicker(WTS,lastW,function(v){S.curWeight=v;},function(v){return Number.isInteger(v)?String(v):v.toFixed(2).replace(/\.?0+$/,'');}));pz.appendChild(wc);
   sc.appendChild(pz);
   var sv=e('button',{class:'sbtn rdy'});
@@ -952,7 +917,7 @@ function rCycSession(wrap){
     startRest(exo.rest);
     if(isLastSet){ses.curSetIdx=0;ses.curExoIdx++;if(!isLastExo){S.curReps=ses.exos[ses.curExoIdx].reps;S.curWeight=ses.exos[ses.curExoIdx].dw||60;}}
     else ses.curSetIdx++;
-    save();render();
+    saveLocal();render();
   };
   sc.appendChild(sv);wrap.appendChild(sc);
 }
@@ -984,7 +949,7 @@ function rCycStats(wrap){
     var card=e('div',{class:'card',style:'margin-top:8px;border-color:var(--blue);'});
     card.appendChild(t('div',S._statsExo,{style:'font-size:13px;font-weight:800;margin-bottom:4px;line-height:1.3;'}));
     if(!pts.length){card.appendChild(t('div','Aucune donnée encore.',{style:'color:var(--t3);padding:16px 0;text-align:center;'}));}
-    else if(pts.length===1){card.innerHTML+='<div style="padding:14px 0;"><span style="color:var(--acc);font-weight:900;font-size:20px;">'+pts[0].avgWeight+'kg</span> · <span style="color:var(--blue);font-weight:900;font-size:20px;">'+pts[0].avgReps+' reps</span><div style="font-size:11px;color:var(--t3);margin-top:4px;">1ère séance · fais en une autre pour voir la courbe</div></div>';}
+    else if(pts.length===1){card.innerHTML+='<div style="padding:14px 0;"><span style="color:var(--acc);font-weight:900;font-size:20px;">'+pts[0].avgWeight+'kg</span> · <span style="color:var(--blue);font-weight:900;font-size:20px;">'+pts[0].avgReps+' reps</span></div>';}
     else{
       var first=pts[0];var last=pts[pts.length-1];
       var dw=Math.round((last.avgWeight-first.avgWeight)*10)/10;
@@ -997,47 +962,13 @@ function rCycStats(wrap){
         cmp.appendChild(box);
       });
       card.appendChild(cmp);
-      [['avgWeight','POIDS MOY. (kg)','var(--acc)'],['avgReps','REPS MOY.','var(--blue)']].forEach(function(cfg){
-        card.appendChild(drawCurve(pts,cfg[0],cfg[1],cfg[2]));
-      });
     }
     sc.appendChild(card);
   }
   wrap.appendChild(sc);
 }
 
-function drawCurve(pts,key,label,color){
-  var wrap2=e('div',{style:'margin-bottom:12px;'});
-  wrap2.appendChild(t('div',label,{style:'font-size:9px;color:var(--t3);letter-spacing:3px;margin-bottom:8px;'}));
-  var vals=pts.map(function(p){return p[key];});
-  var mn=Math.min.apply(null,vals);var mx=Math.max.apply(null,vals);var range=mx-mn||1;
-  var H=80;var W=100;
-  var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-  svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.setAttribute('style','width:100%;height:80px;overflow:visible;');
-  var pathD='';var areaD='';
-  pts.forEach(function(p,i){
-    var x=pts.length===1?W/2:i*(W/(pts.length-1));
-    var y=H-((p[key]-mn)/range)*(H*0.85)-H*0.075;
-    if(i===0){pathD='M'+x.toFixed(1)+','+y.toFixed(1);areaD='M'+x.toFixed(1)+','+H+' L'+x.toFixed(1)+','+y.toFixed(1);}
-    else{pathD+=' L'+x.toFixed(1)+','+y.toFixed(1);areaD+=' L'+x.toFixed(1)+','+y.toFixed(1);}
-  });
-  areaD+=' L'+((pts.length-1)*(W/(pts.length-1||1))).toFixed(1)+','+H+' Z';
-  var area=document.createElementNS('http://www.w3.org/2000/svg','path');area.setAttribute('d',areaD);area.setAttribute('fill',color);area.setAttribute('opacity','0.08');svg.appendChild(area);
-  var path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',pathD);path.setAttribute('fill','none');path.setAttribute('stroke',color);path.setAttribute('stroke-width','1.5');path.setAttribute('stroke-linecap','round');path.setAttribute('stroke-linejoin','round');svg.appendChild(path);
-  pts.forEach(function(p,i){
-    var x=pts.length===1?W/2:i*(W/(pts.length-1));var y=H-((p[key]-mn)/range)*(H*0.85)-H*0.075;
-    var circle=document.createElementNS('http://www.w3.org/2000/svg','circle');circle.setAttribute('cx',x.toFixed(1));circle.setAttribute('cy',y.toFixed(1));circle.setAttribute('r','2.5');circle.setAttribute('fill',color);svg.appendChild(circle);
-    if(i===0||i===pts.length-1){
-      var txt=document.createElementNS('http://www.w3.org/2000/svg','text');txt.setAttribute('x',x.toFixed(1));txt.setAttribute('y',(y-6).toFixed(1));txt.setAttribute('text-anchor',i===0?'start':'end');txt.setAttribute('fill',color);txt.setAttribute('font-size','7');txt.setAttribute('font-weight','700');
-      txt.textContent=p[key]+(key==='avgWeight'?'kg':'');svg.appendChild(txt);
-    }
-  });
-  var xa=e('div',{style:'display:flex;justify-content:space-between;margin-top:4px;'});
-  pts.forEach(function(p,i){if(i===0||i===pts.length-1||pts.length<=4)xa.appendChild(t('div',p.date.slice(5),{style:'font-size:9px;color:var(--t3);'}));});
-  wrap2.appendChild(svg);wrap2.appendChild(xa);return wrap2;
-}
-
-// ─── ENHANCEMENT ─────────────────────────────────────
+// ─── ENHANCEMENT ──────────────────────────────────────────────
 function renderEnh(wrap){
   if(!S.pinSet){rEnhSetPin(wrap);return;}
   if(!S.unlocked){rEnhPin(wrap);return;}
@@ -1058,7 +989,7 @@ function mkPinUI(wrap,title,sub,onComplete){
   var pin='';
   var pad=e('div',{class:'ppad'});
   ['1','2','3','4','5','6','7','8','9','','0','⌫'].forEach(function(k){
-    var b=e('button',{class:'pkey'+(k==='⌫'?' del':'')});b.textContent=k;
+    var b=e('button',{class:'pkey'});b.textContent=k;
     b.onclick=function(){
       if(!k)return;
       if(k==='⌫'){pin=pin.slice(0,-1);err.textContent='';}
@@ -1069,7 +1000,7 @@ function mkPinUI(wrap,title,sub,onComplete){
   });
   div.appendChild(pad);wrap.appendChild(div);
 }
-function rEnhSetPin(wrap){mkPinUI(wrap,'Créer un code PIN','Module protégé par PIN à 4 chiffres',function(pin){S.pinSet=pin;save();S.unlocked=true;S.enhView='home';render();});}
+function rEnhSetPin(wrap){mkPinUI(wrap,'Créer un code PIN','Module protégé par PIN à 4 chiffres',function(pin){S.pinSet=pin;saveLocal();S.unlocked=true;S.enhView='home';render();});}
 function rEnhPin(wrap){mkPinUI(wrap,'Enhancement','Entrez votre PIN',function(pin,err,reset){if(pin===S.pinSet){S.unlocked=true;S.enhView='home';render();}else{err.textContent='PIN incorrect';reset();}});}
 
 function rEnhHome(wrap){
@@ -1087,9 +1018,9 @@ function rEnhHome(wrap){
       if(isToday){var mb=e('button',{style:'padding:5px 12px;background:var(--purple);border:none;border-radius:6px;color:#fff;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;'});mb.textContent='FAIT ✓';mb.onclick=function(){markInj(atc.id,nextInj.id);};ni.appendChild(mb);}
       card.appendChild(ni);
     }
-    var vb=e('button',{class:'btn btn-purple',style:'margin-top:12px;margin-bottom:0;'});vb.textContent='CALENDRIER ›';vb.onclick=function(){S.enhView='detail';render();};card.appendChild(vb);sc.appendChild(card);
+    var vb=e('button',{class:'btn purple',style:'margin-top:12px;margin-bottom:0;'});vb.textContent='CALENDRIER ›';vb.onclick=function(){S.enhView='detail';render();};card.appendChild(vb);sc.appendChild(card);
   }
-  var nb=e('button',{class:'btn btn-purple'});nb.textContent='+ NOUVEAU CYCLE';nb.onclick=function(){S._newEnh={products:[{name:'',dose:'',unit:'mg',form:'injection'}],weeks:12,freqDays:[],startDate:today()};S.enhView='create';render();};sc.appendChild(nb);
+  var nb=e('button',{class:'btn purple'});nb.textContent='+ NOUVEAU CYCLE';nb.onclick=function(){S._newEnh={products:[{name:'',dose:'',unit:'mg',form:'injection'}],weeks:12,freqDays:[],startDate:today()};S.enhView='create';render();};sc.appendChild(nb);
   S.eCycles.filter(function(c){return c.id!==S.activeEnh;}).forEach(function(c){
     var card=e('div',{class:'csm'});card.innerHTML='<div style="font-weight:700;font-size:14px;">'+c.products.map(function(p){return p.name;}).join(' + ')+'</div><div style="font-size:11px;color:var(--t3);margin-top:3px;">'+fmtD(c.startDate)+' · '+c.weeks+' semaines</div>';sc.appendChild(card);
   });
@@ -1135,17 +1066,16 @@ function rEnhCreate(wrap){
       b.onclick=function(){var idx=ne.freqDays.indexOf(i);if(idx>=0)ne.freqDays.splice(idx,1);else ne.freqDays.push(i);render();};dp.appendChild(b);
     });sc.appendChild(dp);
   }
-  var sv2=e('button',{class:'btn btn-purple'});sv2.textContent='CRÉER LE CYCLE';
+  var sv2=e('button',{class:'btn purple'});sv2.textContent='CRÉER LE CYCLE';
   sv2.onclick=async function(){
     if(!ne.products[0].name){alert('Ajoute au moins un produit !');return;}
     var injections=[];
     if(hasInj&&ne.freqDays.length>0){
       var start=new Date(ne.startDate);var end=new Date(ne.startDate);end.setDate(end.getDate()+ne.weeks*7);var cur=new Date(start);
-      while(cur<=end){var dow=(cur.getDay()+6)%7;if(ne.freqDays.includes(dow)){injections.push({id:Date.now()+injections.length,date:cur.toISOString().split('T')[0],done:false,products:ne.products.map(function(p){return {name:p.name,dose:p.dose,unit:p.unit};})});}cur.setDate(cur.getDate()+1);}
+      while(cur<=end){var dow=(cur.getDay()+6)%7;if(ne.freqDays.includes(dow)){injections.push({id:Date.now()+injections.length,date:cur.toISOString().split('T')[0],done:false,products:ne.products.map(function(p){return {name:p.name,dose:p.dose,unit:p.unit};})}); }cur.setDate(cur.getDate()+1);}
     }
     var cycle={id:Date.now(),products:ne.products,weeks:ne.weeks,startDate:ne.startDate,freqDays:ne.freqDays,injections:injections};
-    S.eCycles.push(cycle);S.activeEnh=cycle.id;S._newEnh=null;save();
-    if('Notification'in window&&Notification.permission!=='granted')await Notification.requestPermission();
+    S.eCycles.push(cycle);S.activeEnh=cycle.id;S._newEnh=null;saveLocal();
     S.enhView='detail';render();
   };
   sc.appendChild(sv2);wrap.appendChild(sc);
@@ -1164,7 +1094,6 @@ function rEnhDetail(wrap){
   var sg=e('div',{class:'sgrid'});
   [{l:'Total',v:total},{l:'Faites',v:done},{l:'Restantes',v:total-done}].forEach(function(x){var b=e('div',{class:'sbox'});b.innerHTML='<div class="sv" style="color:var(--purple);">'+x.v+'</div><div class="sl">'+x.l.toUpperCase()+'</div>';sg.appendChild(b);});
   sc.appendChild(sg);
-  // Export calendar button
   var expBtn=e('button',{style:'width:100%;padding:13px;background:#0a0a1a;border:1px solid var(--purple);border-radius:12px;color:var(--purple);font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;margin-bottom:16px;'});
   expBtn.textContent='📅 EXPORTER VERS CALENDRIER IPHONE';
   expBtn.onclick=function(){exportICS(cyc);};sc.appendChild(expBtn);
@@ -1172,12 +1101,12 @@ function rEnhDetail(wrap){
   if(!cyc.injections||!cyc.injections.length){sc.appendChild(t('div','Aucune injection planifiée',{style:'color:var(--t3);text-align:center;padding:20px 0;'}));}
   else{
     cyc.injections.slice().sort(function(a,b){return a.date.localeCompare(b.date);}).forEach(function(inj){
-      var isToday=inj.date===today();var isPast=inj.date<today();
+      var isToday=inj.date===today();
       var div=e('div',{class:'injcard'+(inj.done?' done':isToday?' today':'')});
       var info=e('div');
       info.innerHTML='<div style="font-weight:700;font-size:14px;color:'+(inj.done?'var(--purple)':isToday?'var(--acc)':'var(--t1)')+';">'+(inj.done?'✓ ':isToday?'💉 ':'')+fmtD(inj.date)+'</div><div style="font-size:11px;color:var(--t3);margin-top:3px;">'+inj.products.map(function(p){return p.name+' '+p.dose+p.unit;}).join(' + ')+'</div>';
       div.appendChild(info);
-      if(!inj.done){var btn=e('button',{style:'padding:8px 14px;border-radius:8px;border:none;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;background:'+(isToday?'var(--purple)':'var(--bg3)')+';color:'+(isToday?'#fff':'var(--t2)')+(isToday?'':';border:1px solid var(--border)')});btn.textContent=isToday?'FAIT ✓':'Marquer';var injId=inj.id;var cycId=cyc.id;btn.onclick=function(){markInj(cycId,injId);};div.appendChild(btn);}
+      if(!inj.done){var btn=e('button',{style:'padding:8px 14px;border-radius:8px;border:none;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;background:'+(isToday?'var(--purple)':'var(--bg3)')+';color:'+(isToday?'#fff':'var(--t2)')+(isToday?'':';border:1px solid var(--border)')+''});btn.textContent=isToday?'FAIT ✓':'Marquer';var injId=inj.id;var cycId=cyc.id;btn.onclick=function(){markInj(cycId,injId);};div.appendChild(btn);}
       sc.appendChild(div);
     });
   }
@@ -1190,31 +1119,27 @@ function exportICS(cyc){
     if(inj.done)return;
     var d=inj.date.replace(/-/g,'');
     var prodStr=inj.products.map(function(p){return p.name+' '+p.dose+p.unit;}).join(' + ');
-    lines.push('BEGIN:VEVENT','UID:ironlog-inj-'+inj.id+'@ironlog','DTSTART;VALUE=DATE:'+d,'DTEND;VALUE=DATE:'+d,'SUMMARY:💉 Injection — '+prodStr,'DESCRIPTION:'+prodStr,'BEGIN:VALARM','TRIGGER:-PT0M','ACTION:DISPLAY','DESCRIPTION:💉 Injection aujourd\'hui — '+prodStr,'END:VALARM','END:VEVENT');
+    lines.push('BEGIN:VEVENT','UID:ironlog-inj-'+inj.id+'@ironlog','DTSTART;VALUE=DATE:'+d,'DTEND;VALUE=DATE:'+d,'SUMMARY:💉 Injection — '+prodStr,'DESCRIPTION:'+prodStr,'BEGIN:VALARM','TRIGGER:-PT0M','ACTION:DISPLAY','DESCRIPTION:💉 Injection — '+prodStr,'END:VALARM','END:VEVENT');
   });
   lines.push('END:VCALENDAR');
   var blob=new Blob([lines.join('\r\n')],{type:'text/calendar'});
-  var url=URL.createObjectURL(blob);
-  var a=document.createElement('a');a.href=url;a.download='injections-ironlog.ics';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='injections-ironlog.ics';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
 }
 
 function markInj(cycId,injId){
   var cyc=S.eCycles.find(function(c){return c.id==cycId;});if(!cyc)return;
-  var inj=cyc.injections.find(function(i){return i.id==injId;});if(inj){inj.done=true;inj.doneAt=new Date().toISOString();}
-  save();render();
+  var inj=cyc.injections.find(function(i){return i.id==injId;});
+  if(inj){inj.done=true;inj.doneAt=new Date().toISOString();}
+  saveLocal();render();
 }
 
-// ─── SETTINGS ────────────────────────────────────────
+// ─── SETTINGS ─────────────────────────────────────────────────
 function renderSettings(wrap){
   var sc=e('div',{class:'scroll pt'});sc.appendChild(t('h2','Réglages'));
   var card=e('div',{class:'card'});
-  card.innerHTML='<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #111;"><div><div style="font-size:14px;">Google Sheets</div><div style="font-size:11px;color:var(--t3);margin-top:3px;">'+(S.lastSync?'Sync '+new Date(S.lastSync).toLocaleString('fr'):'Jamais synchronisé')+'</div></div></div>';
-  var ui=e('input',{class:'inp',placeholder:'URL Apps Script',style:'margin:12px 0;'});card.appendChild(ui);
-  var sb=e('button',{class:'btn btn-acc',style:'margin-bottom:0;'});sb.textContent='SYNC MAINTENANT';sb.onclick=function(){var v=ui.value.trim();if(v){SHEET_URL=v;localStorage.setItem('il-url',v);localStorage.setItem('ironlog-sheeturl',v);}S.pending=S.sessions.slice();sync(S.sessions,S.prs);};card.appendChild(sb);
-  // Export
+  card.innerHTML='<div style="font-size:10px;color:var(--t3);letter-spacing:3px;margin-bottom:8px;">BASE DE DONNÉES</div><div style="font-size:13px;color:var(--green);font-weight:700;">✓ Supabase connecté</div><div style="font-size:11px;color:var(--t3);margin-top:4px;">Chaque set est sauvegardé en temps réel</div>';
   var expCard=e('div',{class:'card',style:'margin-top:0;'});
   expCard.appendChild(t('div','EXPORT',{class:'sec'}));
-  expCard.appendChild(t('div','Exporte tes données pour analyse avec Claude.',{style:'font-size:12px;color:var(--t3);line-height:1.5;margin-bottom:12px;'}));
   var expBtn=e('button',{style:'width:100%;padding:14px;background:#0a1a0a;border:1px solid var(--green);border-radius:12px;color:var(--green);font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;'});
   expBtn.textContent='📤 EXPORTER MES DONNÉES (JSON)';
   expBtn.onclick=function(){
@@ -1224,13 +1149,13 @@ function renderSettings(wrap){
   };
   expCard.appendChild(expBtn);
   var info=e('div',{class:'card',style:'margin-top:0;'});
-  info.innerHTML='<div class="sec">DONNÉES</div><div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #111;"><div style="font-size:14px;">Séances</div><div style="color:var(--acc);font-weight:700;">'+S.sessions.length+'</div></div><div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #111;"><div style="font-size:14px;">En attente</div><div style="color:'+(S.pending.length?'var(--acc)':'var(--green)')+';font-weight:700;">'+S.pending.length+'</div></div><div style="display:flex;justify-content:space-between;padding:14px 0;"><div style="font-size:14px;">PRs</div><div style="color:var(--acc);font-weight:700;">'+Object.keys(S.prs).length+'</div></div>';
-  var pb=e('button',{class:'btn-danger btn',style:'margin-bottom:0;'});pb.textContent='Réinitialiser le PIN Enhancement';pb.onclick=function(){if(confirm('Réinitialiser le PIN ?')){S.pinSet=null;S.unlocked=false;save();render();}};
-  var rb=e('button',{class:'btn-danger btn',style:'margin-bottom:0;'});rb.textContent='Effacer toutes les données locales';rb.onclick=function(){if(confirm('Effacer tout ?')){localStorage.removeItem(LS);location.reload();}};
+  info.innerHTML='<div class="sec">DONNÉES</div><div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #111;"><div style="font-size:14px;">Séances</div><div style="color:var(--acc);font-weight:700;">'+S.sessions.length+'</div></div><div style="display:flex;justify-content:space-between;padding:14px 0;"><div style="font-size:14px;">PRs</div><div style="color:var(--acc);font-weight:700;">'+Object.keys(S.prs).length+'</div></div>';
+  var pb=e('button',{class:'danger btn'});pb.textContent='Réinitialiser le PIN Enhancement';pb.onclick=function(){if(confirm('Réinitialiser le PIN ?')){S.pinSet=null;S.unlocked=false;saveLocal();render();}};
+  var rb=e('button',{class:'danger btn'});rb.textContent='Effacer les données locales';rb.onclick=function(){if(confirm('Effacer ?')){localStorage.removeItem(LS);location.reload();}};
   sc.appendChild(card);sc.appendChild(expCard);sc.appendChild(info);sc.appendChild(pb);sc.appendChild(rb);wrap.appendChild(sc);
 }
 
-// ─── NAV ─────────────────────────────────────────────
+// ─── NAV ──────────────────────────────────────────────────────
 function renderNav(){
   var nav=e('nav');
   [['log','➕','Logger'],['history','📋','Séances'],['stats','📊','Stats'],['cycle','🔄','Cycle'],['enh','🧬','Enhance'],['settings','⚙️','Réglages']].forEach(function(tab){
@@ -1238,7 +1163,6 @@ function renderNav(){
     b.innerHTML='<div class="ni">'+tab[1]+'</div><div class="nl">'+tab[2].toUpperCase()+'</div>';
     b.onclick=function(){
       if(tab[0]==='log'&&S.view!=='log'){
-        // Stay on current logging screen if session in progress
         if(!S.sess.sets||!S.sess.sets.length)S.step='muscle';
       }
       if(tab[0]==='cycle'&&S.view!=='cycle')S.cycleView='home';
@@ -1250,31 +1174,39 @@ function renderNav(){
 }
 
 function mkHdr(sub,title,backFn,accentSub){
-  var h=e('div',{style:'padding:calc(var(--st)+90px) 16px 14px;display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid #111;background:#0c0c18;flex-shrink:0;'});
+  var h=e('div',{style:'padding:calc(var(--st)+110px) 16px 14px;display:flex;gap:12px;align-items:center;border-bottom:1px solid #111;background:#0c0c18;flex-shrink:0;'});
   var b=e('button',{class:'back'});b.textContent='←';b.onclick=backFn;h.appendChild(b);
-  var ti=e('div');ti.innerHTML='<div style="font-size:10px;color:'+(accentSub?'var(--acc)':'#555')+';letter-spacing:3px;">'+sub+'</div><div style="font-size:18px;font-weight:900;line-height:1.2;">'+title+'</div>';
+  var ti=e('div');ti.innerHTML='<div style="font-size:10px;color:'+(accentSub?'var(--acc)':'#555')+';letter-spacing:3px;">'+sub+'</div><div style="font-size:22px;font-weight:900;">'+title+'</div>';
   h.appendChild(ti);return h;
 }
 
-// ─── ACTIONS ─────────────────────────────────────────
+// ─── ACTIONS ──────────────────────────────────────────────────
 function finishSession(){
   if(!S.sess.sets||!S.sess.sets.length){resetSess();return;}
   var maxRM=Math.max.apply(null,S.sess.sets.map(function(s){return est1RM(s.weight,s.reps);}));
   var vol=Math.round(S.sess.sets.reduce(function(a,s){return a+s.weight*s.reps;},0));
-  var session={id:Date.now(),date:S.sess.date||today(),muscle:S.sess.muscle,exercise:S.sess.exercise,sets:S.sess.sets,estimated1RM:maxRM,totalVolume:vol};
+  var session={
+    id:Date.now(),
+    date:S.sess.date||today(),
+    muscle:S.sess.muscle,
+    exercise:S.sess.exercise,
+    sets:S.sess.sets,
+    estimated1RM:maxRM,
+    totalVolume:vol
+  };
   if(!S.prs[S.sess.exercise]||maxRM>S.prs[S.sess.exercise])S.prs[S.sess.exercise]=maxRM;
-  S.sessions.unshift(session);S.pending.push(session);
-  resetSess();save();
-  // Finalize in Sheets (saves to Séances tab and clears EnCours)
+  S.sessions.unshift(session);
+  saveLocal();
   finalizeSession(session);
+  resetSess();
 }
 
 function resetSess(){
-  S.sess={date:today(),muscle:'',exercise:'',sets:[],editIdx:-1,sessionId:''};
+  S.sess={sessionId:'',date:today(),muscle:'',exercise:'',sets:[],editIdx:-1};
   S.curReps=8;S.curWeight=60;
   clearInterval(restIv);S.restSecs=0;S.restDur=90;
   S.step='muscle';S.selM=null;S.selE=null;S.selV=null;
-  save();render();
+  render();
 }
 
 function startRest(secs){
@@ -1288,8 +1220,6 @@ function startRest(secs){
   },1000);
   if(!document.querySelector('#rf'))render();
 }
-
-render();
 </script>
 </body>
 </html>
