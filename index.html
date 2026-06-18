@@ -20,7 +20,7 @@ html,body{height:100%;background:var(--bg);color:var(--t1);font-family:-apple-sy
 #app{height:100dvh;display:flex;flex-direction:column;max-width:430px;margin:0 auto;}
 .page{flex:1;display:flex;flex-direction:column;overflow:hidden;}
 .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 16px 16px;}
-.pt{padding-top:calc(var(--st) + 76px);}
+.pt{padding-top:calc(var(--st) + 90px);}
 
 /* NAV */
 nav{display:flex;background:#0a0a14;border-top:1px solid #111;padding-bottom:var(--sb);flex-shrink:0;}
@@ -293,7 +293,7 @@ var S={
   view:'log',step:'muscle',
   selM:null,selE:null,selV:null,
   // Current session being filled
-  sess:{date:'',muscle:'',exercise:'',sets:[],editIdx:-1},
+  sess:{date:'',muscle:'',exercise:'',sets:[],editIdx:-1,sessionId:''},
   curReps:8,curWeight:60,
   restSecs:0,restDur:90,
   // Saved data
@@ -362,29 +362,80 @@ function banner(msg,type){
   b.textContent=msg;b.className=type;
   if(type==='ok'||type==='err')setTimeout(function(){if(b)b.className='';},4000);
 }
+// ── SHEETS API ─────────────────────────────────────
+async function sheetsPost(body){
+  if(!SHEET_URL||SHEET_URL==='skip')return null;
+  try{
+    var r=await fetch(SHEET_URL,{
+      method:'POST',
+      headers:{'Content-Type':'text/plain'},
+      body:JSON.stringify(body)
+    });
+    return await r.json();
+  }catch(e){return null;}
+}
+
+// Sauvegarde un set immédiatement dans Sheets
+async function saveSetToSheets(setData){
+  var res=await sheetsPost({action:'saveSet',set:setData});
+  if(res&&res.ok){banner('✓ Set '+setData.setNumber+' sauvegardé','ok');}
+  else{banner('📵 Hors ligne — set en local','err');}
+}
+
+// Récupère la séance en cours depuis Sheets
+async function loadEnCours(){
+  if(!SHEET_URL||SHEET_URL==='skip')return null;
+  try{
+    var r=await fetch(SHEET_URL+'?action=getEnCours');
+    var d=await r.json();
+    if(d.ok&&d.sets&&d.sets.length)return d;
+  }catch(e){}
+  return null;
+}
+
+// Finalise la séance dans Sheets
+async function finalizeSession(session){
+  var res=await sheetsPost({action:'saveSession',session:session});
+  if(res&&res.ok){
+    S.lastSync=new Date().toISOString();save();
+    banner('✓ Séance enregistrée !','ok');
+  }
+}
+
+// Sync manuelle
 async function sync(sessions,prs){
   if(!SHEET_URL||SHEET_URL==='skip')return;
   banner('⏳ Sync...','s');
-  try{
-    // Use no-cors mode with GET to avoid CORS issues with Google Apps Script
-    var params=encodeURIComponent(JSON.stringify({action:'syncAll',sessions:sessions,prs:prs}));
-    var url=SHEET_URL+'?data='+params;
-    // Try POST first
-    var r=await fetch(SHEET_URL,{
-      method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'text/plain'},
-      body:JSON.stringify({action:'syncAll',sessions:sessions,prs:prs})
-    });
-    // no-cors returns opaque response - assume success if no exception
-    S.pending=[];S.lastSync=new Date().toISOString();save();
-    banner('✓ Synced !','ok');
-    // Update lastSync display without full render
-    var el=document.querySelector('.sync-date');
-    if(el)el.textContent='Sync '+new Date().toLocaleString('fr');
-  }catch(e){banner('📵 Hors ligne — '+e.message,'err');}
+  var res=await sheetsPost({action:'syncAll',sessions:sessions,prs:prs});
+  if(res&&res.ok){S.pending=[];S.lastSync=new Date().toISOString();save();banner('✓ Synced — '+res.added+' ajoutées','ok');}
+  else banner('📵 Hors ligne','err');
 }
-if(SHEET_URL&&SHEET_URL!=='skip'&&S.pending.length)sync(S.pending,S.prs);
+
+// Au démarrage — check si séance en cours dans Sheets
+(async function(){
+  if(SHEET_URL&&SHEET_URL!=='skip'){
+    var enCours=await loadEnCours();
+    if(enCours&&enCours.sets.length&&!S.sess.sets.length){
+      // Propose de reprendre
+      S.sess.sets=enCours.sets.map(function(s){return {reps:s.reps,weight:s.weight};});
+      S.sess.exercise=enCours.session.exercise;
+      S.sess.muscle=enCours.session.muscle;
+      S.sess.date=enCours.session.date;
+      S.sess.sessionId=enCours.session.sessionId;
+      // Find selM and selE from exercise name
+      var parts=S.sess.exercise.split(' — ');
+      if(parts.length>=2){
+        MUSCLES.forEach(function(m){
+          EXO[m.id].forEach(function(ex){
+            if(ex.n===parts[0]){S.selM=m;S.selE=ex;S.selV=parts[1];}
+          });
+        });
+      }
+      if(S.sess.sets.length){S.step='logging';save();render();}
+    }
+    if(S.pending.length)sync(S.pending,S.prs);
+  }
+})();
 
 // ═══════════════════════════════════════════════════════
 // HELPERS
@@ -524,7 +575,7 @@ function renderVariant(wrap){
       // Start new session (clear previous if different exercise)
       if(S.sess.exercise!==exName){
         var lastW=(last&&last.sets.length)?last.sets[last.sets.length-1].weight:60;
-        S.sess={date:today(),muscle:S.selM.label,exercise:exName,sets:[],editIdx:-1};
+        S.sess={date:today(),muscle:S.selM.label,exercise:exName,sets:[],editIdx:-1,sessionId:'sess-'+Date.now()};
         S.curWeight=lastW;S.curReps=8;
       }
       S.step='logging';save();render();
@@ -617,11 +668,24 @@ function renderLogging(wrap){
     if(isEditing){
       S.sess.sets[S.sess.editIdx]={reps:S.curReps,weight:S.curWeight};
       S.sess.editIdx=-1;
+      save();render();
     } else {
-      S.sess.sets.push({reps:S.curReps,weight:S.curWeight});
+      var newSet={reps:S.curReps,weight:S.curWeight};
+      S.sess.sets.push(newSet);
+      save();
+      // Save to Sheets immediately
+      saveSetToSheets({
+        sessionId:S.sess.sessionId,
+        date:S.sess.date||today(),
+        muscle:S.sess.muscle,
+        exercise:S.sess.exercise,
+        setNumber:S.sess.sets.length,
+        reps:S.curReps,
+        weight:S.curWeight
+      });
       startRest(S.sess._restDur||90);
+      render();
     }
-    save();render();
   };
   sc.appendChild(sv);
 
@@ -1186,9 +1250,9 @@ function renderNav(){
 }
 
 function mkHdr(sub,title,backFn,accentSub){
-  var h=e('div',{style:'padding:calc(var(--st)+76px) 16px 14px;display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid #111;background:#0c0c18;flex-shrink:0;'});
+  var h=e('div',{style:'padding:calc(var(--st)+90px) 16px 14px;display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid #111;background:#0c0c18;flex-shrink:0;'});
   var b=e('button',{class:'back'});b.textContent='←';b.onclick=backFn;h.appendChild(b);
-  var ti=e('div');ti.innerHTML='<div style="font-size:10px;color:'+(accentSub?'var(--acc)':'#555')+';letter-spacing:3px;">'+sub+'</div><div style="font-size:22px;font-weight:900;">'+title+'</div>';
+  var ti=e('div');ti.innerHTML='<div style="font-size:10px;color:'+(accentSub?'var(--acc)':'#555')+';letter-spacing:3px;">'+sub+'</div><div style="font-size:18px;font-weight:900;line-height:1.2;">'+title+'</div>';
   h.appendChild(ti);return h;
 }
 
@@ -1201,11 +1265,12 @@ function finishSession(){
   if(!S.prs[S.sess.exercise]||maxRM>S.prs[S.sess.exercise])S.prs[S.sess.exercise]=maxRM;
   S.sessions.unshift(session);S.pending.push(session);
   resetSess();save();
-  if(SHEET_URL&&SHEET_URL!=='skip')sync(S.pending,S.prs);
+  // Finalize in Sheets (saves to Séances tab and clears EnCours)
+  finalizeSession(session);
 }
 
 function resetSess(){
-  S.sess={date:today(),muscle:'',exercise:'',sets:[],editIdx:-1};
+  S.sess={date:today(),muscle:'',exercise:'',sets:[],editIdx:-1,sessionId:''};
   S.curReps=8;S.curWeight=60;
   clearInterval(restIv);S.restSecs=0;S.restDur=90;
   S.step='muscle';S.selM=null;S.selE=null;S.selV=null;
