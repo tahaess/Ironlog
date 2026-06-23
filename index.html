@@ -14,13 +14,13 @@
   --acc:#f97316;--bg:#080810;--bg2:#111118;--bg3:#1a1a28;
   --border:#1e1e2e;--t1:#f0f0f8;--t2:#888;--t3:#444;
   --green:#22c55e;--red:#ef4444;--purple:#a855f7;--blue:#3b82f6;
-  --sb:env(safe-area-inset-bottom,16px);--st:env(safe-area-inset-top,0px);
+  --sb:env(safe-area-inset-bottom,16px);--st:0px;
 }
 html,body{height:100%;background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,sans-serif;overflow:hidden;}
 #app{height:100dvh;display:flex;flex-direction:column;max-width:430px;margin:0 auto;}
 .page{flex:1;display:flex;flex-direction:column;overflow:hidden;}
 .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 16px 16px;}
-.pt{padding-top:calc(var(--st) + 130px);}
+.pt{padding-top:calc(var(--st) + 180px);}
 nav{display:flex;background:#0a0a14;border-top:1px solid #111;padding-bottom:var(--sb);flex-shrink:0;}
 nav button{flex:1;padding:8px 0 5px;background:none;border:none;cursor:pointer;font-family:inherit;}
 nav .ni{font-size:18px;}
@@ -48,7 +48,7 @@ h2{font-size:26px;font-weight:900;margin-bottom:4px;}
 .lbtn{width:100%;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;text-align:left;cursor:pointer;font-family:inherit;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
 .lbtn:active{border-color:var(--acc);}
 .pr{color:var(--acc);font-size:12px;font-weight:800;flex-shrink:0;margin-left:8px;}
-.lhdr{padding:12px 16px 12px;border-bottom:1px solid #111;background:#0c0c18;flex-shrink:0;padding-top:calc(var(--st) + 130px);}
+.lhdr{padding:12px 16px 12px;border-bottom:1px solid #111;background:#0c0c18;flex-shrink:0;padding-top:calc(var(--st) + 180px);}
 .set-row{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;margin-bottom:6px;background:var(--bg2);border:1px solid var(--border);cursor:pointer;}
 .set-row.editing{border-color:var(--blue);background:#0a0f1a;}
 .set-row.saved{border-color:#1a3a1a;}
@@ -509,6 +509,21 @@ function mkPicker(items,cur,onChange,fmt){
 }
 
 // ═══ RENDER ENGINE ══════════════════════════════════════════════
+// Detect real safe area on iPhone
+(function(){
+  var st=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--st'))||0;
+  // For Dynamic Island iPhones, status bar is ~59px, for notch ~44px
+  // Use a test element to detect
+  var probe=document.createElement('div');
+  probe.style.cssText='position:fixed;top:env(safe-area-inset-top,0px);height:1px;width:1px;';
+  document.body.appendChild(probe);
+  setTimeout(function(){
+    var real=probe.getBoundingClientRect().top;
+    document.body.removeChild(probe);
+    var safeTop=Math.max(real,59);
+    document.documentElement.style.setProperty('--st',safeTop+'px');
+  },100);
+})();
 var app=document.getElementById('app');
 function render(){
   app.innerHTML='';
@@ -1196,7 +1211,7 @@ function renderNav(){
 }
 
 function mkHdr(sub,title,backFn,accentSub){
-  var h=e('div',{style:'padding:calc(var(--st)+130px) 16px 14px;display:flex;gap:12px;align-items:center;border-bottom:1px solid #111;background:#0c0c18;flex-shrink:0;'});
+  var h=e('div',{style:'padding:calc(var(--st)+180px) 16px 14px;display:flex;gap:12px;align-items:center;border-bottom:1px solid #111;background:#0c0c18;flex-shrink:0;'});
   var b=e('button',{class:'back'});b.textContent='←';b.onclick=backFn;h.appendChild(b);
   var ti=e('div');ti.innerHTML='<div style="font-size:10px;color:'+(accentSub?'var(--acc)':'#555')+';letter-spacing:3px;">'+sub+'</div><div style="font-size:22px;font-weight:900;">'+title+'</div>';
   h.appendChild(ti);return h;
