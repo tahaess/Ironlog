@@ -116,10 +116,18 @@ async function sbGet(table,params){
 async function sbPost(table,data){
   var r=await fetch(SB_URL+'/rest/v1/'+table,{
     method:'POST',
-    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+    headers:{
+      'apikey':SB_KEY,
+      'Authorization':'Bearer '+SB_KEY,
+      'Content-Type':'application/json',
+      'Prefer':'return=minimal'
+    },
     body:JSON.stringify(data)
   });
-  if(!r.ok)throw new Error(await r.text());
+  if(!r.ok){
+    var errText=await r.text();
+    throw new Error('HTTP '+r.status+': '+errText);
+  }
   return true;
 }
 async function sbUpsert(table,data){
@@ -350,7 +358,8 @@ function loader(show){
 // ═══ SUPABASE REAL-TIME SAVE ════════════════════════════════════
 async function saveSetNow(setData){
   try{
-    await sbPost('encours',{
+    banner('⏳ Sauvegarde...','s');
+    var result=await sbPost('encours',{
       session_id:setData.sessionId,
       date:setData.date,
       muscle:setData.muscle,
@@ -359,9 +368,9 @@ async function saveSetNow(setData){
       reps:setData.reps,
       weight:setData.weight
     });
-    banner('✓ Set '+setData.setNumber+' sauvegardé','ok');
+    banner('✓ Set '+setData.setNumber+' sauvegardé dans Supabase','ok');
   }catch(ex){
-    banner('📵 Hors ligne — set local','err');
+    banner('❌ Erreur: '+ex.message,'err');
   }
 }
 
