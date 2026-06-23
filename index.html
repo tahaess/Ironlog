@@ -920,9 +920,21 @@ function rCycSession(wrap){
   sv.textContent=isLastSet&&isLastExo?'TERMINER LA SÉANCE ✓':isLastSet?'EXO SUIVANT ›':'VALIDER SET '+(ses.curSetIdx+1);
   sv.onclick=function(){
     ses.logData=ses.logData||[];
-    ses.logData.push({exo:exo.name,set:ses.curSetIdx+1,reps:S.curReps,weight:S.curWeight});
+    var setNum=ses.curSetIdx+1;
+    ses.logData.push({exo:exo.name,set:setNum,reps:S.curReps,weight:S.curWeight});
     var key=exo.name;var rm=est1RM(S.curWeight,S.curReps);
     if(!S.prs[key]||rm>S.prs[key])S.prs[key]=rm;
+    // Save to Supabase immediately
+    if(!ses.sessionId)ses.sessionId=uid();
+    saveSetNow({
+      sessionId:ses.sessionId,
+      date:today(),
+      muscle:ses.name,
+      exercise:exo.name,
+      setNumber:setNum,
+      reps:S.curReps,
+      weight:S.curWeight
+    });
     startRest(exo.rest);
     if(isLastSet){ses.curSetIdx=0;ses.curExoIdx++;if(!isLastExo){S.curReps=ses.exos[ses.curExoIdx].reps;S.curWeight=ses.exos[ses.curExoIdx].dw||60;}}
     else ses.curSetIdx++;
